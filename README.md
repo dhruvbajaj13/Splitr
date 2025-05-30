@@ -93,15 +93,15 @@ This project,[Splitr](https://github.com/dhruvbajaj13/splitr), is licensed under
 
 A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
-## Permissions
+<span style="font-size:18px; font-weight:bold;">Permissions</span>
 * **Commercial use**
 * **Modification**
 * **Distribution**
 * **Private use**
-## Limitations
+### Limitations
 * **Liability**
 * **Warranty**
-## Conditions
+### Conditions
 * **License and copyright notice**
 
 # Acknowleddgments
