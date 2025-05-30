@@ -1,33 +1,39 @@
 # Splitr
 Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting dinner bills or managing trip expenses, Splitr ensures fairness,and clarity.
+
 # Features
-Absolutely! Here's a **Features** section you can include in your README for **Splitr**:
-
----
-
-## 🚀 Features
-
 * **💸 Add & Split Expenses** – Quickly add expenses and split them evenly or unevenly among group members.
 * **👥 Group Management** – Create groups for trips, roommates, or events and manage shared bills effortlessly.
 * **🔐 Secure Authentication** – User sign-up and login powered by **Clerk** for a seamless and secure experience.
 * **⚡ Real-time Sync** – Powered by **Convex**, all updates reflect instantly across all users' devices.
-* **🎨 Responsive UI** – Clean and modern interface built with **React.js** and **Tailwind CSS**.
-* **🧠 AI Assistance** *(Optional)* – Integrated **Gemini AI** for natural language expense entry and smart suggestions.
+* **🎨 Responsive UI** – Clean and modern interface built with **React.js**, **Tailwind CSS** and **Shadcn UI**.
 * **📊 Expense Summary** – View clear, auto-updated balances for who owes whom.
 * **🔄 Settle Up** – Track settlements and reset group balances after payments.
-* **🔍 Filter & Search** – Easily filter expenses by user, category, or date. *(Optional/Advanced)*
 
----
+# Tech Stack
+* **Frontend:** Next.js, Javascript, Tailwind CSS
+* **Backend:** Convex 
+* **Authentication:** Clerk
+* **AI Integration:** Gemini AI
 
-Let me know which features you've already implemented and I can tailor it accordingly or help you build new ones!
+#Getting Started
+### 1. **Clone the repository**
 
-
-![splitr](https://github.com/user-attachments/assets/11e138c4-efcf-4a85-8586-f2993da118d8)
-
-### Make sure to create a `.env` file with following variables -
-
+```bash
+git clone https://github.com/your-username/splitr.git
+cd splitr
 ```
-# Deployment used by `npx convex dev`
+
+### 2. **Install dependencies**
+```bash
+npm install
+```
+
+### 3. **Set up environment variables**
+
+Create a `.env` file in the root directory and add the required environment variables:
+
+```env
 CONVEX_DEPLOYMENT=
 
 NEXT_PUBLIC_CONVEX_URL=
@@ -44,3 +50,63 @@ RESEND_API_KEY=
 
 GEMINI_API_KEY=
 ```
+
+> Replace the values with your actual **Clerk** and **Convex** credentials.
+
+### 4. **Run the development server**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser to see the app running.
+
+
+
+
+#Contributing
+1. **Fork** this repository
+2. **Clone** your forked repo
+
+   ```bash
+   git clone https://github.com/your-username/splitr.git
+   ```
+3. **Create a new branch**
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Make your changes** and **commit**
+
+   ```bash
+   git commit -m "Add: Your meaningful commit message"
+   ```
+5. **Push** to your branch
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Open a Pull Request** – Go to the original repo and submit a PR!
+
+#License
+This project,[Splitr](https://github.com/dhruvbajaj13/splitr), is licensed under the MIT License.
+
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+
+##Permissions
+* **Commercial use**
+* **Modification**
+* **Distribution**
+* **Private use**
+##Limitations
+* **Liability**
+* **Warranty**
+##Conditions
+* **License and copyright notice**
+
+
+
+
+
+
+
