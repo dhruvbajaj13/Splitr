@@ -14,7 +14,7 @@ Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwin
 * **Frontend:** Next.js, Javascript, Tailwind CSS, ShadCN UI
 * **Backend:** Convex 
 * **Authentication:** Clerk
-* **Workflow Automation / Event Handling:** Inngest
+* **Workflow Automation:** Inngest
 * **AI Integration:** Gemini AI
 
 # Getting Started
