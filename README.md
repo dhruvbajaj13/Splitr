@@ -1,4 +1,5 @@
 # Splitr
+Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling natural language expense input, real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting dinner bills or managing trip expenses, Splitr ensures fairness, clarity, and zero awkwardness.
 ## https://youtu.be/Ce7O3p7-YDI
 
 ![splitr](https://github.com/user-attachments/assets/11e138c4-efcf-4a85-8586-f2993da118d8)
