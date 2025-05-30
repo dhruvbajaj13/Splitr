@@ -11,7 +11,7 @@ Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwin
 * **🔄 Settle Up** – Track settlements and reset group balances after payments.
 
 # Tech Stack
-* **Frontend:** Next.js, Javascript, Tailwind CSS
+* **Frontend:** Next.js, Javascript, Tailwind CSS, ShadCN UI
 * **Backend:** Convex 
 * **Authentication:** Clerk
 * **Workflow Automation / Event Handling:** Inngest
