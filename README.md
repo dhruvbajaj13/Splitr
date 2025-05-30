@@ -59,7 +59,7 @@ GEMINI_API_KEY=
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser to see the app running.
+Open [http://localhost:5173](http://localhost:3000) in your browser to see the app running.
 
 
 
@@ -93,16 +93,16 @@ This project,[Splitr](https://github.com/dhruvbajaj13/splitr), is licensed under
 
 A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
-<span style="font-size:18px; font-weight:bold;">Permissions</span>
-* **Commercial use**
-* **Modification**
-* **Distribution**
-* **Private use**
+### Permissions
+* Commercial use
+* Modification
+* Distribution
+* Private use
 ### Limitations
-* **Liability**
-* **Warranty**
+* Liability
+* Warranty
 ### Conditions
-* **License and copyright notice**
+* License and copyright notice
 
 # Acknowleddgments
 * **[Clerk](https://clerk.com)** for authentication
