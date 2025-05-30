@@ -1,5 +1,5 @@
 # Splitr
-Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting dinner bills or managing trip expenses, Splitr ensures fairness,and clarity.
+Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting bills or managing trip expenses, Splitr ensures fairness,and clarity.
 
 # Features
 * **💸 Add & Split Expenses** – Quickly add expenses and split them evenly or unevenly among group members.
@@ -16,7 +16,7 @@ Splitr is a smart, AI-powered expense-splitting app built with React.js, Tailwin
 * **Authentication:** Clerk
 * **AI Integration:** Gemini AI
 
-#Getting Started
+# Getting Started
 ### 1. **Clone the repository**
 
 ```bash
@@ -64,7 +64,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser to see the a
 
 
 
-#Contributing
+# Contributing
 1. **Fork** this repository
 2. **Clone** your forked repo
 
@@ -88,21 +88,28 @@ Open [http://localhost:5173](http://localhost:5173) in your browser to see the a
    ```
 6. **Open a Pull Request** – Go to the original repo and submit a PR!
 
-#License
+# License
 This project,[Splitr](https://github.com/dhruvbajaj13/splitr), is licensed under the MIT License.
 
 A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
-##Permissions
+## Permissions
 * **Commercial use**
 * **Modification**
 * **Distribution**
 * **Private use**
-##Limitations
+## Limitations
 * **Liability**
 * **Warranty**
-##Conditions
+## Conditions
 * **License and copyright notice**
+
+# Acknowleddgments
+* **[Clerk](https://clerk.com)** for authentication
+* **[Convex](https://convex.dev)** for backend services
+* **[ShadCN](https://ui.shadcn.com)** for UI components
+* **[Tailwind CSS](https://tailwindcss.com)** for styling
+
 
 
 
