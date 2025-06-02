@@ -385,7 +385,7 @@ export default function SettlementForm({ entityType, entityData, onSuccess }) {
             <div className="space-y-2">
               <Label htmlFor="amount">Amount</Label>
               <div className="relative">
-               <span className="absolute left-3 top-2.5"> ₹</span>
+               <span className="absolute left-3 top-2">₹</span>
 
                 <Input
                   id="amount"
