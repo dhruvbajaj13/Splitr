@@ -17,6 +17,10 @@ Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind
 * **Workflow Automation:** Inngest
 * **AI Integration:** Gemini AI
 
+# Demo
+
+* **[Live Demo](https://splitr-q9gg.vercel.app/):** Watch a video demonstration of the project, including its main features anf functionality.
+
 # Getting Started
 ### 1. **Clone the repository**
 
