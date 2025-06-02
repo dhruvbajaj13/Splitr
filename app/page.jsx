@@ -103,7 +103,7 @@ export default function LandingPage() {
       <footer className="text-[#0e0e10] bg-white py-8 px-18">
         <div className="max-w-8xl mx-auto grid md:grid-cols-3 gap-8">
           
-          <div>
+          <div class name="mr-10 pr-10">
             <h2 className="text-2xl font-bold text-gray-800">Splitr</h2>
             <p className="mt-2 text-md text-gray-500">
              Settle smarter. Simplify group expenses and stay stress-free with Splitr.
