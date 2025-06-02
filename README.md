@@ -19,7 +19,7 @@ Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind
 
 # Demo
 
-* **[Live Demo](https://splitr-q9gg.vercel.app/):** Watch a video demonstration of the project, including its main features anf functionality.
+* **[Live Demo](https://splitr-q9gg.vercel.app/):**Check out the live version of Splitr to see its features in action.
 
 # Getting Started
 ### 1. **Clone the repository**
