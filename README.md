@@ -109,7 +109,7 @@ A short and simple permissive license with conditions only requiring preservatio
 ### Conditions
 * License and copyright notice
 
-# Acknowleddgments
+# Acknowledgments 
 * **[Clerk](https://clerk.com)** for authentication
 * **[Convex](https://convex.dev)** for backend services
 * **[ShadCN](https://ui.shadcn.com)** for UI components
