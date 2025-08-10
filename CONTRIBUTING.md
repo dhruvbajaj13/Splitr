@@ -15,13 +15,13 @@ It simplifies splitting bills between friends, tracking payments, and managing s
 
 ### Install Requirements:
 
-Node.js ≥ 18
+*Node.js ≥ 18
 
-npm or yarn
+*npm or yarn
 
-Convex CLI installed globally (npm install -g convex)
+*Convex CLI installed globally (npm install -g convex)
 
-Clerk test credentials (get from project admin)
+*Clerk test credentials (get from project admin)
 
 # Getting Started (Setup Instructions)
 
@@ -46,9 +46,6 @@ CONVEX_DEPLOYMENT=...
 RAZORPAY_KEY_ID=...
 RAZORPAY_KEY_SECRET=...
 OPENAI_API_KEY=...
-
-
----
 
 # Contribution Workflow
 
@@ -80,42 +77,42 @@ git push origin feature/your-feature-name
 
 # Issue Labels
 
-good first issue → Easy, beginner-friendly
+* good first issue → Easy, beginner-friendly
 
-help wanted → Needs extra eyes
+* help wanted → Needs extra eyes
 
-bug → Something is broken
+* bug → Something is broken
 
-enhancement → Feature improvements
+* enhancement → Feature improvements
 
-documentation → README or doc updates
+* documentation → README or doc updates
 
 # Code Style Guidelines
 
-Follow JavaScript strict mode
+* Follow JavaScript strict mode
 
-Prettier for formatting (npm run format)
+* Prettier for formatting (npm run format)
 
-Descriptive commit messages (Conventional Commits format)
+* Descriptive commit messages (Conventional Commits format)
 
-No direct commits to main
+* No direct commits to main
 
 
 # Communication
 
-Primary: GitHub Discussions
+* Primary: GitHub Discussions
 
-Secondary: GSSoC Discord
+* Secondary: GSSoC Discord
 
-For private queries, contact @dhruvbajaj13 (project admin)
+* For private queries, contact @dhruvbajaj13 (project admin)
 
 
 # First PR Ideas
 
-Improve README visuals (badges, screenshots)
+* Improve README visuals (badges, screenshots)
 
-UI polish (empty state screens, loading spinners)
+* UI polish (empty state screens, loading spinners)
 
-Create reusable components for buttons, modals
+* Create reusable components for buttons, modals
 
-Write utility functions for expense calculations
+* Write utility functions for expense calculations
