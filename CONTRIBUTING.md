@@ -4,15 +4,13 @@ It simplifies splitting bills between friends, tracking payments, and managing s
 
 # Tech Stack & Requirements
 
-Frontend: Next.js 14, TypeScript, Tailwind CSS
+* Frontend: Next.js 14, TypeScript, Tailwind CSS
 
-Backend: Convex
+* Backend: Convex
 
-Auth: Clerk
+* Auth: Clerk
 
-Payments: Razorpay Integration (Pro Plan)
-
-AI: Gemini API (optional for local dev)
+* AI: Gemini API (optional for local dev)
 
 
 ### Install Requirements:
