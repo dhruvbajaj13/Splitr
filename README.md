@@ -1,7 +1,10 @@
-# Splitr
+# 🤖💸Splitr - AI Expense Splitting Platform
 
 ![GSSoC'25](https://img.shields.io/badge/GSSoC'25-Selected-orange?style=for-the-badge)
 ![GSSoC-OpenSource](https://img.shields.io/badge/Open%20Source%20Program-GSSoC-orange?style=for-the-badge&logo=opensourceinitiative)
+![Built with Love](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red?style=for-the-badge)
+![GitHub Stars](https://img.shields.io/github/stars/<your-username>/Splitr?style=for-the-badge&logo=github)
+![GitHub Forks](https://img.shields.io/github/forks/<your-username>/Splitr?style=for-the-badge&logo=github)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
@@ -9,6 +12,7 @@
 ![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge&logo=git)
 ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red?style=for-the-badge)
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green?style=for-the-badge)
 
 ---
 # 📌Overview
