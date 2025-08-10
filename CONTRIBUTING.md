@@ -15,13 +15,13 @@ It simplifies splitting bills between friends, tracking payments, and managing s
 
 ### Install Requirements:
 
-*Node.js ≥ 18
+* Node.js ≥ 18
 
-*npm or yarn
+* npm or yarn
 
-*Convex CLI installed globally (npm install -g convex)
+* Convex CLI installed globally (npm install -g convex)
 
-*Clerk test credentials (get from project admin)
+* Clerk test credentials (get from project admin)
 
 # Getting Started (Setup Instructions)
 
