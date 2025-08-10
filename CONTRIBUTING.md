@@ -7,7 +7,7 @@ We’re thrilled to have you on board and can’t wait to see your ideas come to
 Splitr is an AI-powered expense-sharing web app built with Next.js, TypeScript, Tailwind CSS, and Convex.
 It simplifies splitting bills between friends, tracking payments, and managing shared expenses with AI-assisted summaries.
 
-# Tech Stack & Requirements
+# 🛠Tech Stack & Requirements
 
 - ⚡ **Next.js 14** + **JavaScript** + **Tailwind CSS**
 - 🛠 **Convex** (Backend)
