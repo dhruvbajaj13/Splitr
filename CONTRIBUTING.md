@@ -23,28 +23,29 @@ It simplifies splitting bills between friends, tracking payments, and managing s
 ---
 # 🚀Getting Started (Setup Instructions)
 
-## 1. Fork the repository
-## 2. Clone your fork
-   `git clone https://github.com/<your-username>/Splitr.git`
+1. **Fork** this repository
+2. **Clone** your forked repo
 
-## 3. Install dependencies
-npm install
+   ```bash
+   git clone https://github.com/your-username/splitr.git
+   ```
+3. **Create a new branch**
 
-## 4. Start Convex
-npx convex dev
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Make your changes** and **commit**
 
-## 5. Run the app
-npm run dev
+   ```bash
+   git commit -m "Add: Your meaningful commit message"
+   ```
+5. **Push** to your branch
 
-🔹 Environment Variables (create .env.local):
-
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=...
-CLERK_SECRET_KEY=...
-CONVEX_DEPLOYMENT=...
-RAZORPAY_KEY_ID=...
-RAZORPAY_KEY_SECRET=...
-OPENAI_API_KEY=...
-
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Open a Pull Request** – Go to the original repo and submit a PR!
+   
 # Contribution Workflow
 
 1. Pick an Issue → Check GitHub Issues with good first issue or help wanted.
