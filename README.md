@@ -15,6 +15,7 @@
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green?style=for-the-badge)
 
 ---
+
 # 📌Overview
 Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting bills or managing trip expenses, Splitr ensures fairness, and clarity.
 
@@ -45,6 +46,7 @@ Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind
 # 🚀Demo
 
 * **[Live Demo](https://splitr-q9gg.vercel.app/):** Check out the live version of Splitr to see its features in action.
+
 
 # Getting Started
 ### 1. **Clone the repository**
@@ -91,9 +93,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app running.
 
+
 # 🤝Contributing
 We welcome contributions from the community!
 Please read our Contributing Guidelines before you start.
+
 
 # 📜License
 This project, [Splitr](https://github.com/dhruvbajaj13/splitr), is licensed under the MIT License.
@@ -111,12 +115,14 @@ A short and simple permissive license with conditions only requiring preservatio
 ### Conditions
 * License and copyright notice
 
+
 # 🌟Acknowledgments 
 * **[Clerk](https://clerk.com)** for authentication
 * **[Convex](https://convex.dev)** for backend services
 * **[ShadCN](https://ui.shadcn.com)** for UI components
 * **[Tailwind CSS](https://tailwindcss.com)** for styling
 * **[Inngest](https://inngest.com)** for workflow automation
+
 
 # 💬Connect with the Project Admin
 **Dhruv Bajaj** [Email][mailto:d4bajaj@gmail.com] | [Github](https://github.com/dhruvbajaj13) | [Linkedin](https://www.linkedin.com/in/dhruvbajaj13)
