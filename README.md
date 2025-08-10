@@ -94,9 +94,11 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app running.
 
 
+
 # 🤝Contributing
 We welcome contributions from the community!
 Please read our Contributing Guidelines before you start.
+
 
 
 # 📜License
@@ -125,7 +127,7 @@ A short and simple permissive license with conditions only requiring preservatio
 
 
 # 💬Connect with the Project Admin
-**Dhruv Bajaj** [Email][mailto:d4bajaj@gmail.com] | [Github](https://github.com/dhruvbajaj13) | [Linkedin](https://www.linkedin.com/in/dhruvbajaj13)
+**Dhruv Bajaj** [Github](https://github.com/dhruvbajaj13) | [Linkedin](https://www.linkedin.com/in/dhruvbajaj13)
 
 
 
