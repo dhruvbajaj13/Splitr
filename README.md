@@ -27,14 +27,22 @@ Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind
 * **📊 Expense Summary** – View clear, auto-updated balances for who owes whom.
 * **🔄 Settle Up** – Track settlements and reset group balances after payments.
 
-# Tech Stack
+# 🛠Tech Stack
 * **Frontend:** Next.js, Javascript, Tailwind CSS, ShadCN UI
 * **Backend:** Convex 
 * **Authentication:** Clerk
 * **Workflow Automation:** Inngest
 * **AI Integration:** Gemini AI
 
-# Demo
+## 🏗 Local Development
+
+### Prerequisites
+- Node.js ≥ 18
+- npm or yarn
+- Convex CLI (`npm install -g convex`)
+
+
+# 🚀Demo
 
 * **[Live Demo](https://splitr-q9gg.vercel.app/):** Check out the live version of Splitr to see its features in action.
 
@@ -83,34 +91,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app running.
 
+# 🤝Contributing
+We welcome contributions from the community!
+Please read our Contributing Guidelines before you start.
 
-
-
-# Contributing
-1. **Fork** this repository
-2. **Clone** your forked repo
-
-   ```bash
-   git clone https://github.com/your-username/splitr.git
-   ```
-3. **Create a new branch**
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-4. **Make your changes** and **commit**
-
-   ```bash
-   git commit -m "Add: Your meaningful commit message"
-   ```
-5. **Push** to your branch
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-6. **Open a Pull Request** – Go to the original repo and submit a PR!
-
-# License
+# 📜License
 This project, [Splitr](https://github.com/dhruvbajaj13/splitr), is licensed under the MIT License.
 
 A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
@@ -126,12 +111,15 @@ A short and simple permissive license with conditions only requiring preservatio
 ### Conditions
 * License and copyright notice
 
-# Acknowledgments 
+# 🌟Acknowledgments 
 * **[Clerk](https://clerk.com)** for authentication
 * **[Convex](https://convex.dev)** for backend services
 * **[ShadCN](https://ui.shadcn.com)** for UI components
 * **[Tailwind CSS](https://tailwindcss.com)** for styling
 * **[Inngest](https://inngest.com)** for workflow automation
+
+# 💬Connect with the Project Admin
+**Dhruv Bajaj** [Email][mailto:d4bajaj@gmail.com] | [Github](https://github.com/dhruvbajaj13) | [Linkedin](https://www.linkedin.com/in/dhruvbajaj13)
 
 
 
