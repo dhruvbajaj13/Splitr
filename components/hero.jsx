@@ -99,31 +99,57 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* ───── Features ───── */}
+     {/* ───── Features ───── */}
       <section id="features" className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <Badge variant="outline" className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border  ">
+          {/* Section Badge */}
+          <Badge
+            variant="outline"
+            className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border"
+          >
             Features
           </Badge>
-          <h1 className=" mt-2 text-4xl font-semibold md:text-4xl">
+
+          {/* Title */}
+          <h1 className="mt-2 text-4xl font-semibold md:text-4xl">
             Everything you need to Split Expenses
           </h1>
+
+          {/* Subtitle */}
           <p className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed">
-            Our platform provides all the tools you need  to  handle <br/> shared
-            expenses with ease.
+            Our platform provides all the tools you need to handle <br />
+            shared expenses with ease.
           </p>
 
+          {/* Features Grid */}
           <div className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map(({ title, Icon, bg, color, description }) => (
               <Card
                 key={title}
-                className="flex flex-col items-center space-y-4 p-6 shadow-lg text-center"
+                className="
+            flex flex-col items-center space-y-4 p-6 
+            bg-white rounded-xl 
+            shadow-md hover:shadow-xl 
+            transform transition-all duration-300 
+            hover:scale-105 
+            cursor-pointer text-center
+          "
               >
-                <div className={`rounded-full p-3 ${bg}`}>
-                  <Icon className={`h-6 w-6 ${color}`} />
+                {/* Icon Wrapper */}
+                <div
+                  className={`rounded-full p-4 transition-all duration-300 transform hover:rotate-6 ${bg}`}
+                >
+                  <Icon
+                    className={`h-8 w-8 ${color} transition-colors duration-300`}
+                  />
                 </div>
 
-                <h3 className="text-[22px] font-bold">{title}</h3>
+                {/* Feature Title */}
+                <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600">
+                  {title}
+                </h3>
+
+                {/* Feature Description */}
                 <p className="text-gray-600">{description}</p>
               </Card>
             ))}
