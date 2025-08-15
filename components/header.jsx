@@ -10,13 +10,14 @@ import { BarLoader } from "react-spinners";
 import { Authenticated, Unauthenticated } from "convex/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 export default function Header() {
   const { isLoading } = useStoreUser();
   const path = usePathname();
 
   return (
-    <header className="fixed pt-2 top-0 w-full border-b bg-white/95 backdrop-blur z-50 supports-[backdrop-filter]:bg-white/60">
+    <header className="fixed pt-2 top-0 w-full border-b bg-background/95 backdrop-blur z-50 supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -30,13 +31,13 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-10 ">
             <Link
               href="#features"
-              className="text-[18px] font-medium hover:text-blue-700 ml-14 hover:underline transition"
+              className="text-[18px] font-medium hover:text-blue-700 dark:hover:text-blue-400 ml-14 hover:underline transition"
             >
               Features
             </Link>
             <Link
               href="#how-it-works"
-              className="text-[18px] font-medium hover:text-blue-700  hover:underline transition"
+              className="text-[18px] font-medium hover:text-blue-700 dark:hover:text-blue-400 hover:underline transition"
             >
               How It Works
             </Link>
@@ -44,11 +45,13 @@ export default function Header() {
         )}
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
+          
           <Authenticated>
             <Link href="/dashboard">
               <Button
                 variant="outline"
-                className="hidden md:inline-flex items-center gap-2 text-gray-700 cursor-pointer  bg-zinc-50 hover:text-blue-700 transition-all">
+                className="hidden md:inline-flex items-center gap-2 text-foreground cursor-pointer bg-secondary hover:text-primary transition-all">
                 <LayoutDashboard className="h-4 w-4" />
                 Dashboard
               </Button>
@@ -75,7 +78,7 @@ export default function Header() {
             </SignInButton>
 
             <SignUpButton>
-              <Button className="bg-zinc-800 hover:bg-zinc-700 cursor-pointer border-none">
+              <Button className="bg-primary hover:bg-primary/90 cursor-pointer border-none">
                 Get Started
               </Button>
             </SignUpButton>

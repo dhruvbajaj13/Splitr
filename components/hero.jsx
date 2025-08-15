@@ -36,7 +36,7 @@ const HeroSection = () => {
     <div>
        <section className="mt-20 pb-12 space-y-10 md:space-y-15 px-5">
         <div className="container mx-auto px-6 md:px-6 text-center  space-y-6">
-          <Badge variant="outline" className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border  ">
+          <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border">
             Split expenses. Simplify life.
           </Badge>
 
@@ -44,7 +44,7 @@ const HeroSection = () => {
             The Smartest Way Of <br/> Splitting Bills With Friends
           </h1>
 
-          <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed text-xl  mt-5 mb-8 font-medium">
+          <p className="mx-auto max-w-[700px] text-gray-600 dark:text-gray-300 md:text-xl/relaxed text-xl  mt-5 mb-8 font-medium">
             Track shared expenses, split bills effortlessly, and settle up
             quickly. Never worry about who owes who again.
           </p>
@@ -86,13 +86,13 @@ const HeroSection = () => {
       </section>
 
       {/*----------Stats Section--------*/}
-      <section className="py-14 bg-blue-50">
+      <section className="py-14 bg-blue-50 dark:bg-blue-950/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {statsData.map((statsData,index)=>(
-              <div key={index} className="text-center">
-                <div className="text-4xl font-bold text-blue-600 mb-2">{statsData.value}</div>
-                <div className="text-gray-600 font-medium">{statsData.label}</div>
+            {statsData.map(({ id, value, label }) => (
+              <div key={id} className="text-center">
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{value}</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">{label}</div>
               </div>
             ))}
           </div>
@@ -100,35 +100,35 @@ const HeroSection = () => {
       </section>
 
      {/* ───── Features ───── */}
-      <section id="features" className="bg-white py-20">
+      <section id="features" className="bg-background py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
           {/* Section Badge */}
           <Badge
             variant="outline"
-            className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border"
+            className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border"
           >
             Features
           </Badge>
 
           {/* Title */}
-          <h1 className="mt-2 text-4xl font-semibold md:text-4xl">
+          <h1 className="mt-2 text-4xl font-semibold md:text-4xl text-foreground">
             Everything you need to Split Expenses
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed">
+          <p className="mx-auto mt-3 max-w-[700px] text-muted-foreground md:text-xl/relaxed">
             Our platform provides all the tools you need to handle <br />
             shared expenses with ease.
           </p>
 
           {/* Features Grid */}
           <div className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map(({ title, Icon, bg, color, description }) => (
+            {FEATURES.map(({ id, title, Icon, bg, color, description }) => (
               <Card
-                key={title}
+                key={id}
                 className="
             flex flex-col items-center space-y-4 p-6 
-            bg-white rounded-xl 
+            bg-card rounded-xl 
             shadow-md hover:shadow-xl 
             transform transition-all duration-300 
             hover:scale-105 
@@ -145,12 +145,12 @@ const HeroSection = () => {
                 </div>
 
                 {/* Feature Title */}
-                <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600">
+                <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 text-foreground">
                   {title}
                 </h3>
 
                 {/* Feature Description */}
-                <p className="text-gray-600">{description}</p>
+                <p className="text-muted-foreground">{description}</p>
               </Card>
             ))}
           </div>
