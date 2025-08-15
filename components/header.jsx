@@ -3,15 +3,14 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { SignInButton, SignUpButton } from "@clerk/nextjs";
-import { useStoreUser } from "@/hooks/use-store-user";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { BarLoader } from "react-spinners";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
-  const { isLoading } = useStoreUser();
+  const { isSignedIn, isLoaded } = useUser();
   const [activeHash, setActiveHash] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -371,34 +370,71 @@ export default function Header() {
 
             {/* Desktop Auth Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              <motion.div
-                custom={0}
-                variants={buttonVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover="hover"
-                whileTap="tap"
-              >
-                <SignInButton mode="modal">
-                  <button className="signin-btn px-5 py-2.5 text-sm font-medium rounded-lg border-2 transition-all duration-300 hover:shadow-md">
-                    Sign in
-                  </button>
-                </SignInButton>
-              </motion.div>
-              <motion.div
-                custom={1}
-                variants={buttonVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover="hover"
-                whileTap="tap"
-              >
-                <SignUpButton mode="modal">
-                  <Button className="cta-btn h-11 px-6 text-sm font-medium rounded-lg border-2 transition-all duration-300 hover:shadow-lg">
-                    Get Started
-                  </Button>
-                </SignUpButton>
-              </motion.div>
+              {isSignedIn ? (
+                <>
+                  <motion.div
+                    custom={0}
+                    variants={buttonVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <Button asChild className="cta-btn h-11 px-6 text-sm font-medium rounded-lg border-2 transition-all duration-300 hover:shadow-lg">
+                      <Link href="/dashboard">
+                        Dashboard
+                      </Link>
+                    </Button>
+                  </motion.div>
+                  <motion.div
+                    custom={1}
+                    variants={buttonVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <UserButton 
+                      appearance={{
+                        elements: {
+                          avatarBox: "w-10 h-10"
+                        }
+                      }}
+                    />
+                  </motion.div>
+                </>
+              ) : (
+                <>
+                  <motion.div
+                    custom={0}
+                    variants={buttonVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <SignInButton mode="modal">
+                      <button className="signin-btn px-5 py-2.5 text-sm font-medium rounded-lg border-2 transition-all duration-300 hover:shadow-md">
+                        Sign in
+                      </button>
+                    </SignInButton>
+                  </motion.div>
+                  <motion.div
+                    custom={1}
+                    variants={buttonVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <SignUpButton mode="modal">
+                      <Button className="cta-btn h-11 px-6 text-sm font-medium rounded-lg border-2 transition-all duration-300 hover:shadow-lg">
+                        Get Started
+                      </Button>
+                    </SignUpButton>
+                  </motion.div>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -412,29 +448,29 @@ export default function Header() {
               whileHover="hover"
               whileTap="tap"
             >
-                             <AnimatePresence mode="wait">
-                 {isMobileMenuOpen ? (
-                   <motion.div
-                     key="close"
-                     initial={{ rotate: -45, opacity: 0, scale: 0.8 }}
-                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                     exit={{ rotate: 45, opacity: 0, scale: 0.8 }}
-                     transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                   >
-                     <X className="w-6 h-6" />
-                   </motion.div>
-                 ) : (
-                   <motion.div
-                     key="menu"
-                     initial={{ rotate: 45, opacity: 0, scale: 0.8 }}
-                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                     exit={{ rotate: -45, opacity: 0, scale: 0.8 }}
-                     transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                   >
-                     <Menu className="w-6 h-6" />
-                   </motion.div>
-                 )}
-               </AnimatePresence>
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                    exit={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
+                    <X className="w-6 h-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                    exit={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
+                    <Menu className="w-6 h-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.button>
           </div>
 
@@ -476,26 +512,56 @@ export default function Header() {
                     animate="visible"
                     custom={navItems.length}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <SignInButton mode="modal">
-                        <button className="signin-btn w-full py-3 px-4 text-base font-medium rounded-lg border-2 transition-all duration-300">
-                          Sign in
-                        </button>
-                      </SignInButton>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <SignUpButton mode="modal">
-                        <Button className="cta-btn w-full h-12 text-base font-medium rounded-lg border-2 transition-all duration-300">
-                          Get Started
-                        </Button>
-                      </SignUpButton>
-                    </motion.div>
+                    {isSignedIn ? (
+                      <>
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <Button asChild className="cta-btn w-full h-12 text-base font-medium rounded-lg border-2 transition-all duration-300">
+                            <Link href="/dashboard">
+                              Dashboard
+                            </Link>
+                          </Button>
+                        </motion.div>
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="flex justify-center"
+                        >
+                          <UserButton 
+                            appearance={{
+                              elements: {
+                                avatarBox: "w-12 h-12"
+                              }
+                            }}
+                          />
+                        </motion.div>
+                      </>
+                    ) : (
+                      <>
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <SignInButton mode="modal">
+                            <button className="signin-btn w-full py-3 px-4 text-base font-medium rounded-lg border-2 transition-all duration-300">
+                              Sign in
+                            </button>
+                          </SignInButton>
+                        </motion.div>
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <SignUpButton mode="modal">
+                            <Button className="cta-btn w-full h-12 text-base font-medium rounded-lg border-2 transition-all duration-300">
+                              Get Started
+                            </Button>
+                          </SignUpButton>
+                        </motion.div>
+                      </>
+                    )}
                   </motion.div>
                 </div>
               </motion.div>
@@ -503,7 +569,7 @@ export default function Header() {
           </AnimatePresence>
         </nav>
 
-        {isLoading && (
+        {!isLoaded && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
