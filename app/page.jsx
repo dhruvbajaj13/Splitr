@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -5,99 +7,136 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import HeroSection from "@/components/hero";
+import { motion } from "framer-motion";
 
 import { STEPS, TESTIMONIALS } from "@/lib/landing";
 
 export default function LandingPage() {
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
 
   return (
-    <div className="flex flex-col pt-16">
+    <div className="flex flex-col">
       {/* ───── Hero ───── */}
       <HeroSection />
 
       {/* ───── How it works ───── */}
-      <section id="how-it-works" className="py-10 bg-blue-50">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+      <motion.section
+        id="how-it-works"
+        className="py-10 bg-blue-50"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.div className="container mx-auto px-4 md:px-6 text-center" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <Badge variant="outline" className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border ">
             How It Works
           </Badge>
-          <h1 className="font-semibold mt-2 text-5xl md:text-4xl">
+          <motion.h1 className="font-semibold mt-2 text-5xl md:text-4xl" variants={itemVariants}>
             Splitting expenses has never been easier
-          </h1>
-          <p className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed">
+          </motion.h1>
+          <motion.p className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed" variants={itemVariants}>
             Follow these simple steps to start tracking and splitting <br/> expenses
             with friends :-
-          </p>
+          </motion.p>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
+          <motion.div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3" variants={staggerContainer}>
             {STEPS.map(({ icon, title, description }) => (
-              <div key={icon} className="flex flex-col items-center space-y-4">
-                <div className="flex h-12 w-12 items-center justify-center border rounded-full bg-blue-200 text-lg font-bold text-blue-800">
+              <motion.div key={icon} className="flex flex-col items-center space-y-4" variants={itemVariants} whileHover={{ y: -6, scale: 1.02 }} transition={{ type: "spring", stiffness: 220, damping: 18 }}>
+                <motion.div className="flex h-12 w-12 items-center justify-center border rounded-full bg-blue-200 text-lg font-bold text-blue-800" whileHover={{ rotate: 8 }} transition={{ duration: 0.25 }}>
                   {icon}
-                </div>
+                </motion.div>
                 <h3 className="text-[22px] font-bold">{title}</h3>
                 <p className="text-gray-600 text-center">{description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* ───── Testimonials ───── */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+      <motion.section className="bg-gray-50 py-20" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div className="container mx-auto px-4 md:px-6 text-center" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <Badge variant="outline" className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border ">
             Testimonials
           </Badge>
-          <h1 className="font-semibold mt-2 text-5xl md:text-4xl">
+          <motion.h1 className="font-semibold mt-2 text-5xl md:text-4xl" variants={itemVariants}>
             What Our Users Say
-          </h1>
+          </motion.h1>
 
-          <div className="mx-auto mt-8 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div className="mx-auto mt-8 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3" variants={staggerContainer}>
             {TESTIMONIALS.map(({ quote, name, role, image }) => (
-              <Card key={name} className="flex flex-col justify-between">
-                <CardContent className="space-y-4 px-6 pl-3 py-2">
-                  
-                  <div className="flex items-center space-x-5 mb-8">
-                    <Avatar>
-                      {/* Placeholder avatar */}
-                      <AvatarImage src={image} alt={name} />
-                      <AvatarFallback className="uppercase">
-                        {name.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-left">
-                      <p className="text-md font-semibold">{name}</p>
-                      <p className="text-sm text-muted-foreground font-medium">{role}</p>
-                    </div>
+              <motion.div key={name} variants={itemVariants} whileHover={{ y: -6, scale: 1.01 }} transition={{ type: "spring", stiffness: 220, damping: 18 }}>
+                <Card className="flex flex-col justify-between">
+                  <CardContent className="space-y-4 px-6 pl-3 py-2">
                     
-                  </div>
-                  <p className="text-gray-600 px-3">{quote}</p>
-                </CardContent>
-              </Card>
+                    <div className="flex items-center space-x-5 mb-8">
+                      <Avatar>
+                        {/* Placeholder avatar */}
+                        <AvatarImage src={image} alt={name} />
+                        <AvatarFallback className="uppercase">
+                          {name.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="text-left">
+                        <p className="text-md font-semibold">{name}</p>
+                        <p className="text-sm text-muted-foreground font-medium">{role}</p>
+                      </div>
+                      
+                    </div>
+                    <p className="text-gray-600 px-3">{quote}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* ───── Call‑to‑Action ───── */}
-      <section className="py-20 bg-blue-600">
-        <div className="container mx-auto px-4 md:px-6 text-center space-y-6">
-          <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl text-white">
+      <motion.section className="py-20 bg-blue-600" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div className="container mx-auto px-4 md:px-6 text-center space-y-6" variants={staggerContainer}>
+          <motion.h2 className="text-3xl font-extrabold tracking-tight md:text-4xl text-white" variants={itemVariants}>
             Ready to Simplify Expense Sharing?
-          </h2>
-          <p className="mx-auto max-w-[600px] text-green-100 md:text-xl/relaxed">
+          </motion.h2>
+          <motion.p className="mx-auto max-w-[600px] text-green-100 md:text-xl/relaxed" variants={itemVariants}>
             Join thousands of users who have made splitting expenses
             stress‑free.
-          </p>
-          <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50 animate-bounce cursor-pointer rounded">
-            <Link href="/dashboard">
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+          </motion.p>
+          <motion.div variants={itemVariants} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+            <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50 cursor-pointer rounded">
+              <Link href="/dashboard">
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* ───── Footer ───── */}
       <footer className="text-[#0e0e10] bg-white py-8 px-18">
