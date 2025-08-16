@@ -184,7 +184,7 @@ export default function Header() {
 
   const navItemVariants = {
     hidden: { y: -10, opacity: 0 },
-    visible: (i: number) => ({
+    visible: (i) => ({
       y: 0,
       opacity: 1,
       transition: { delay: 0.2 + i * 0.08, duration: 0.6 },
