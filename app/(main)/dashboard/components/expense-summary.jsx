@@ -49,13 +49,13 @@ export function ExpenseSummary({ monthlySpending, totalSpent }) {
       <CardContent>
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-muted rounded-lg p-4">
-            <p className="text-md text-gray-600 font-medium">Total this month</p>
+            <p className="text-md text-gray-600 dark:text-gray-300 font-medium">Total this month</p>
             <h3 className="text-2xl font-bold mt-1">
               ₹{monthlySpending?.[currentMonth]?.total.toFixed(2) || "0.00"}
             </h3>
           </div>
           <div className="bg-muted rounded-lg p-4">
-            <p className="text-md text-gray-600 font-medium">Total this year</p>
+            <p className="text-md text-gray-600 dark:text-gray-300 font-medium">Total this year</p>
             <h3 className="text-2xl font-bold mt-1">
               ₹{totalSpent?.toFixed(2) || "0.00"}
             </h3>

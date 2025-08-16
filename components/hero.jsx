@@ -202,6 +202,29 @@ const HeroSection = () => {
   };
 
   return (
+<<<<<<< feature/DarkMode
+    <div>
+       <section className="mt-20 pb-12 space-y-10 md:space-y-15 px-5">
+        <div className="container mx-auto px-6 md:px-6 text-center  space-y-6">
+          <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border">
+            Split expenses. Simplify life.
+          </Badge>
+
+          <h1 className="gradient-title mx-auto max-w-[1200px] text-5xl  font-bold md:text-8xl ">
+            The Smartest Way Of <br/> Splitting Bills With Friends
+          </h1>
+
+          <p className="mx-auto max-w-[700px] text-gray-600 dark:text-gray-300 md:text-xl/relaxed text-xl  mt-5 mb-8 font-medium">
+            Track shared expenses, split bills effortlessly, and settle up
+            quickly. Never worry about who owes who again.
+          </p>
+
+          <div className="flex flex-col items-center gap-10 sm:flex-row justify-center ">
+            <Button
+              asChild
+              size="lg"
+              className="px-10 text-[16px] font-semibold hover:bg-black hover:text-white rounded hover:scale-115 transition-all duration-500"
+=======
     <motion.div
       variants={containerVariants}
       initial="hidden"
@@ -233,6 +256,7 @@ const HeroSection = () => {
             <motion.h1
               variants={titleVariants}
               className="mx-auto max-w-[1200px] text-5xl font-bold md:text-6xl text-blue-600 leading-relaxed"
+>>>>>>> main
             >
               The Smartest Way Of <br /> Splitting Bills With Friends
             </motion.h1>
@@ -288,6 +312,16 @@ const HeroSection = () => {
 
       {/* Rest of the sections (stats, image, features) without texture */}
       {/*----------Stats Section--------*/}
+<<<<<<< feature/DarkMode
+      <section className="py-14 bg-blue-50 dark:bg-blue-950/20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {statsData.map(({ id, value, label }) => (
+              <div key={id} className="text-center">
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{value}</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">{label}</div>
+              </div>
+=======
       <motion.section
         className="py-16 bg-white"
         variants={statsVariants}
@@ -349,6 +383,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               </motion.div>
+>>>>>>> main
             ))}
           </div>
         </div>
@@ -365,6 +400,21 @@ const HeroSection = () => {
         </p>
       </motion.div>
 
+<<<<<<< feature/DarkMode
+     {/* ───── Features ───── */}
+      <section id="features" className="bg-background py-20">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          {/* Section Badge */}
+          <Badge
+            variant="outline"
+            className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border"
+          >
+            Features
+          </Badge>
+
+          {/* Title */}
+          <h1 className="mt-2 text-4xl font-semibold md:text-4xl text-foreground">
+=======
       <motion.div
         className="hero-image-wrapper container mx-auto max-w-[1120px] overflow-hidden"
         variants={imageVariants}
@@ -406,19 +456,38 @@ const HeroSection = () => {
             variants={titleVariants}
             className="mt-2 text-4xl font-semibold md:text-4xl"
           >
+>>>>>>> main
             Everything you need to Split Expenses
           </motion.h1>
 
           {/* Subtitle */}
+<<<<<<< feature/DarkMode
+          <p className="mx-auto mt-3 max-w-[700px] text-muted-foreground md:text-xl/relaxed">
+=======
           <motion.p
             variants={subtitleVariants}
             className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed"
           >
+>>>>>>> main
             Our platform provides all the tools you need to handle <br />
             shared expenses with ease.
           </motion.p>
 
           {/* Features Grid */}
+<<<<<<< feature/DarkMode
+          <div className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {FEATURES.map(({ id, title, Icon, bg, color, description }) => (
+              <Card
+                key={id}
+                className="
+            flex flex-col items-center space-y-4 p-6 
+            bg-card rounded-xl 
+            shadow-md hover:shadow-xl 
+            transform transition-all duration-300 
+            hover:scale-105 
+            cursor-pointer text-center
+          "
+=======
           <motion.div
             className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3"
             variants={itemVariants}
@@ -429,6 +498,7 @@ const HeroSection = () => {
                 variants={featureCardVariants}
                 whileHover="hover"
                 custom={index}
+>>>>>>> main
               >
                 <Card className="
                   flex flex-col items-center space-y-4 p-6 
@@ -448,6 +518,16 @@ const HeroSection = () => {
                     />
                   </motion.div>
 
+<<<<<<< feature/DarkMode
+                {/* Feature Title */}
+                <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 text-foreground">
+                  {title}
+                </h3>
+
+                {/* Feature Description */}
+                <p className="text-muted-foreground">{description}</p>
+              </Card>
+=======
                   {/* Feature Title */}
                   <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600">
                     {title}
@@ -457,6 +537,7 @@ const HeroSection = () => {
                   <p className="text-gray-600">{description}</p>
                 </Card>
               </motion.div>
+>>>>>>> main
             ))}
           </motion.div>
         </div>

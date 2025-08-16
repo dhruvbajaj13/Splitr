@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import { Toaster } from "sonner";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -15,11 +16,27 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logos/logo-s.png" sizes="any" />
       </head>
       <body className={`${inter.className}`}>
+<<<<<<< feature/DarkMode
+        <ThemeProvider>
+          <ClerkProvider
+            publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+          >
+            <ConvexClientProvider>
+              <Header />
+              <main className="min-h-screen">
+                <Toaster richColors />
+                {children}
+              </main>
+              <ScrollToTop /> {/* 👈 Added here */}
+            </ConvexClientProvider>
+          </ClerkProvider>
+        </ThemeProvider>
+=======
         <ClerkProvider
           publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
         >
@@ -32,6 +49,7 @@ export default function RootLayout({ children }) {
             <ScrollToTop /> {/* 👈 Added here */}
           </ConvexClientProvider>
         </ClerkProvider>
+>>>>>>> main
       </body>
     </html>
   );
