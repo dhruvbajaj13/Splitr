@@ -202,29 +202,6 @@ const HeroSection = () => {
   };
 
   return (
-<<<<<<< feature/DarkMode
-    <div>
-       <section className="mt-20 pb-12 space-y-10 md:space-y-15 px-5">
-        <div className="container mx-auto px-6 md:px-6 text-center  space-y-6">
-          <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border">
-            Split expenses. Simplify life.
-          </Badge>
-
-          <h1 className="gradient-title mx-auto max-w-[1200px] text-5xl  font-bold md:text-8xl ">
-            The Smartest Way Of <br/> Splitting Bills With Friends
-          </h1>
-
-          <p className="mx-auto max-w-[700px] text-gray-600 dark:text-gray-300 md:text-xl/relaxed text-xl  mt-5 mb-8 font-medium">
-            Track shared expenses, split bills effortlessly, and settle up
-            quickly. Never worry about who owes who again.
-          </p>
-
-          <div className="flex flex-col items-center gap-10 sm:flex-row justify-center ">
-            <Button
-              asChild
-              size="lg"
-              className="px-10 text-[16px] font-semibold hover:bg-black hover:text-white rounded hover:scale-115 transition-all duration-500"
-=======
     <motion.div
       variants={containerVariants}
       initial="hidden"
@@ -232,7 +209,7 @@ const HeroSection = () => {
     >
       {/* Hero Text Section with texture */}
       <div
-        className=" relative pt-10 bg-gradient-to-br from-blue-50 via-white to-blue-100/50"
+        className="relative pt-10 bg-gradient-to-br from-blue-50 via-white to-blue-100/50 dark:from-blue-950 dark:via-background dark:to-blue-900/40"
         style={{
           backgroundImage: `
             radial-gradient(circle at 25px 25px, rgba(59, 130, 246, 0.15) 3px, transparent 3px),
@@ -246,24 +223,23 @@ const HeroSection = () => {
         }}
       >
         <section className="pb-6 space-y-10 md:space-y-15 px-5 relative z-10">
-          <div className="container mt-10mx-auto px-6 md:px-6 text-center space-y-12">
+          <div className="container mx-auto px-6 md:px-6 text-center space-y-12">
             <motion.div variants={badgeVariants}>
-              <Badge variant="outline" className="bg-blue-50 text-[14px] text-blue-600 border-blue-200">
+              <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border">
                 Split expenses. Simplify life.
               </Badge>
             </motion.div>
 
             <motion.h1
               variants={titleVariants}
-              className="mx-auto max-w-[1200px] text-5xl font-bold md:text-6xl text-blue-600 leading-relaxed"
->>>>>>> main
+              className="gradient-title mx-auto max-w-[1200px] text-5xl font-bold md:text-8xl dark:text-blue-100"
             >
               The Smartest Way Of <br /> Splitting Bills With Friends
             </motion.h1>
 
             <motion.p
               variants={subtitleVariants}
-              className="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed text-lg mt-8 mb-12"
+              className="mx-auto max-w-[700px] text-gray-600 dark:text-gray-300 md:text-xl/relaxed text-xl mt-5 mb-8 font-medium"
             >
               Track shared expenses, split bills effortlessly, and settle up
               quickly. Never worry about who owes who again.
@@ -300,7 +276,7 @@ const HeroSection = () => {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="px-10 py-4 text-[18px] font-semibold border-2 border-gray-300 text-gray-700 hover:bg-gray-50 rounded-lg transition-all duration-300"
+                  className="px-10 py-4 text-[18px] font-semibold border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
                 >
                   <Link href="#how-it-works">See How It Works</Link>
                 </Button>
@@ -310,111 +286,46 @@ const HeroSection = () => {
         </section>
       </div>
 
-      {/* Rest of the sections (stats, image, features) without texture */}
-      {/*----------Stats Section--------*/}
-<<<<<<< feature/DarkMode
-      <section className="py-14 bg-blue-50 dark:bg-blue-950/20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {statsData.map(({ id, value, label }) => (
-              <div key={id} className="text-center">
-                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{value}</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">{label}</div>
-              </div>
-=======
+      {/* Stats Section */}
       <motion.section
-        className="py-16 bg-white"
+        className="py-16 bg-blue-50 dark:bg-blue-950/20"
         variants={statsVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="container mx-auto px-4">
-
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mx-10 md:mx-16 lg:mx-24">
-            {[
-              {
-                icon: "👥",
-                value: "10K+",
-                label: "Active Users",
-                color: "from-blue-500 to-blue-600"
-              },
-              {
-                icon: "💰",
-                value: "50K+",
-                label: "Expenses Split",
-                color: "from-green-500 to-green-600"
-              },
-              {
-                icon: "⚡",
-                value: "100+",
-                label: "Tools & Features",
-                color: "from-purple-500 to-purple-600"
-              },
-              {
-                icon: "⭐",
-                value: "4.9",
-                label: "User Rating",
-                color: "from-orange-500 to-orange-600"
-              }
-            ].map((stat, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {statsData.map(({ id, value, label }) => (
               <motion.div
-                key={index}
+                key={id}
                 className="text-center group"
                 variants={statItemVariants}
                 whileHover="hover"
-                custom={index}
               >
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 group-hover:scale-105">
-                  {/* Icon */}
-                  <div className={`w-14 h-14 mx-auto mb-4 rounded-lg bg-blue-100 flex items-center justify-center text-2xl text-blue-600 group-hover:scale-110 transition-transform duration-300`}>
-                    {stat.icon}
-                  </div>
-
-                  {/* Value */}
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                    {stat.value}
-                  </div>
-
-                  {/* Label */}
-                  <div className="text-gray-600 font-medium text-sm md:text-base">
-                    {stat.label}
-                  </div>
+                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-blue-800 hover:shadow-md transition-all duration-300 group-hover:scale-105">
+                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{value}</div>
+                  <div className="text-gray-600 dark:text-gray-300 font-medium">{label}</div>
                 </div>
               </motion.div>
->>>>>>> main
             ))}
           </div>
         </div>
       </motion.section>
+
       <motion.div
         className="text-center mb-12"
         variants={itemVariants}
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-blue-200 mb-4">
           Trusted by Thousands
         </h2>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
           Join our growing community of users who trust Splitr for their expense management
         </p>
       </motion.div>
 
-<<<<<<< feature/DarkMode
-     {/* ───── Features ───── */}
-      <section id="features" className="bg-background py-20">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          {/* Section Badge */}
-          <Badge
-            variant="outline"
-            className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border"
-          >
-            Features
-          </Badge>
-
-          {/* Title */}
-          <h1 className="mt-2 text-4xl font-semibold md:text-4xl text-foreground">
-=======
+      {/* Hero Image */}
       <motion.div
         className="hero-image-wrapper container mx-auto max-w-[1120px] overflow-hidden"
         variants={imageVariants}
@@ -431,10 +342,11 @@ const HeroSection = () => {
           />
         </div>
       </motion.div>
-      {/* ───── Features ───── */}
+
+      {/* Features Section */}
       <motion.section
         id="features"
-        className="bg-white py-20"
+        className="bg-background dark:bg-blue-950/20 py-20"
         variants={featuresVariants}
         initial="hidden"
         whileInView="visible"
@@ -445,7 +357,7 @@ const HeroSection = () => {
           <motion.div variants={badgeVariants}>
             <Badge
               variant="outline"
-              className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border"
+              className="bg-blue-100 dark:bg-blue-900/20 text-[14px] text-blue-800 dark:text-blue-300 mb-[-0.5px] border"
             >
               Features
             </Badge>
@@ -454,55 +366,35 @@ const HeroSection = () => {
           {/* Title */}
           <motion.h1
             variants={titleVariants}
-            className="mt-2 text-4xl font-semibold md:text-4xl"
+            className="mt-2 text-4xl font-semibold md:text-4xl text-foreground dark:text-blue-100"
           >
->>>>>>> main
             Everything you need to Split Expenses
           </motion.h1>
 
           {/* Subtitle */}
-<<<<<<< feature/DarkMode
-          <p className="mx-auto mt-3 max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-=======
           <motion.p
             variants={subtitleVariants}
-            className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed"
+            className="mx-auto mt-3 max-w-[700px] text-muted-foreground dark:text-gray-300 md:text-xl/relaxed"
           >
->>>>>>> main
             Our platform provides all the tools you need to handle <br />
             shared expenses with ease.
           </motion.p>
 
           {/* Features Grid */}
-<<<<<<< feature/DarkMode
-          <div className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map(({ id, title, Icon, bg, color, description }) => (
-              <Card
-                key={id}
-                className="
-            flex flex-col items-center space-y-4 p-6 
-            bg-card rounded-xl 
-            shadow-md hover:shadow-xl 
-            transform transition-all duration-300 
-            hover:scale-105 
-            cursor-pointer text-center
-          "
-=======
           <motion.div
             className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3"
             variants={itemVariants}
           >
-            {FEATURES.map(({ title, Icon, bg, color, description }, index) => (
+            {FEATURES.map(({ id, title, Icon, bg, color, description }, index) => (
               <motion.div
-                key={title}
+                key={id}
                 variants={featureCardVariants}
                 whileHover="hover"
                 custom={index}
->>>>>>> main
               >
                 <Card className="
                   flex flex-col items-center space-y-4 p-6 
-                  bg-white rounded-xl 
+                  bg-card dark:bg-blue-900/40 rounded-xl 
                   shadow-md hover:shadow-xl 
                   transform transition-all duration-300 
                   cursor-pointer text-center
@@ -518,26 +410,15 @@ const HeroSection = () => {
                     />
                   </motion.div>
 
-<<<<<<< feature/DarkMode
-                {/* Feature Title */}
-                <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 text-foreground">
-                  {title}
-                </h3>
-
-                {/* Feature Description */}
-                <p className="text-muted-foreground">{description}</p>
-              </Card>
-=======
                   {/* Feature Title */}
-                  <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600">
+                  <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 text-foreground dark:text-blue-100">
                     {title}
                   </h3>
 
                   {/* Feature Description */}
-                  <p className="text-gray-600">{description}</p>
+                  <p className="text-muted-foreground dark:text-gray-300">{description}</p>
                 </Card>
               </motion.div>
->>>>>>> main
             ))}
           </motion.div>
         </div>
