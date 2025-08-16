@@ -6,33 +6,203 @@ import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { FEATURES,statsData } from "@/lib/landing";
+import { FEATURES, statsData } from "@/lib/landing";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
-    
-    const imageRef = useRef(null);
+  const imageRef = useRef(null);
 
-    useEffect(() => {
-      const imageElement = imageRef.current;
+  useEffect(() => {
+    const imageElement = imageRef.current;
 
-      const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        const scrollThreshold = 100;
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const scrollThreshold = 100;
 
-        if (scrollPosition > scrollThreshold) {
-          imageElement.classList.add("scrolled");
-        } else {
-          imageElement.classList.remove("scrolled");
-        }
-      };
+      if (scrollPosition > scrollThreshold) {
+        imageElement.classList.add("scrolled");
+      } else {
+        imageElement.classList.remove("scrolled");
+      }
+    };
 
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const badgeVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const subtitleVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.3,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: (i) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        delay: 0.5 + (i * 0.1),
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }),
+    hover: {
+      scale: 1.05,
+      y: -2,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    },
+    tap: {
+      scale: 0.95,
+      transition: {
+        duration: 0.1
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { scale: 0.9, opacity: 0, y: 50 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        delay: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    },
+    hover: {
+      scale: 1.02,
+      transition: {
+        duration: 0.4,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const statsVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const statItemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    },
+    hover: {
+      y: -5,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const featuresVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const featureCardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    },
+    hover: {
+      y: -8,
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
 
   return (
+<<<<<<< feature/DarkMode
     <div>
        <section className="mt-20 pb-12 space-y-10 md:space-y-15 px-5">
         <div className="container mx-auto px-6 md:px-6 text-center  space-y-6">
@@ -54,38 +224,95 @@ const HeroSection = () => {
               asChild
               size="lg"
               className="px-10 text-[16px] font-semibold hover:bg-black hover:text-white rounded hover:scale-115 transition-all duration-500"
-            >
-              <Link href="/dashboard">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="px-6  text-[16px] font-semibold border-2  rounded hover:scale-115 transition-all duration-500"
-            >
-              <Link href="#how-it-works">See How It Works</Link>
-            </Button>
-          </div>
-        </div>
+=======
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Hero Text Section with texture */}
+      <div
+        className=" relative pt-10 bg-gradient-to-br from-blue-50 via-white to-blue-100/50"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 25px 25px, rgba(59, 130, 246, 0.15) 3px, transparent 3px),
+            radial-gradient(circle at 75px 75px, rgba(147, 197, 253, 0.12) 2px, transparent 2px),
+            linear-gradient(45deg, rgba(59, 130, 246, 0.08) 25%, transparent 25%),
+            linear-gradient(-45deg, rgba(147, 197, 253, 0.06) 25%, transparent 25%),
+            repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(59, 130, 246, 0.03) 40px, rgba(59, 130, 246, 0.03) 42px)
+          `,
+          backgroundSize: '50px 50px, 100px 100px, 20px 20px, 20px 20px',
+          backgroundPosition: '0 0, 0 0, 0 0, 10px 10px'
+        }}
+      >
+        <section className="pb-6 space-y-10 md:space-y-15 px-5 relative z-10">
+          <div className="container mt-10mx-auto px-6 md:px-6 text-center space-y-12">
+            <motion.div variants={badgeVariants}>
+              <Badge variant="outline" className="bg-blue-50 text-[14px] text-blue-600 border-blue-200">
+                Split expenses. Simplify life.
+              </Badge>
+            </motion.div>
 
-        <div className="hero-image-wrapper container mx-auto max-w-[1120px] overflow-hidden  shadow-2xl">
-          <div ref={imageRef} className="hero-image ">
-            <Image
-              src="/hero.jpeg"
-              width={1280}
-              height={720}
-              alt="Banner"
-              className="h-160 w-340  shadow-2xl border mx-auto mb-6"
-              priority
-            />
-          </div>
-        </div>
-      </section>
+            <motion.h1
+              variants={titleVariants}
+              className="mx-auto max-w-[1200px] text-5xl font-bold md:text-6xl text-blue-600 leading-relaxed"
+>>>>>>> main
+            >
+              The Smartest Way Of <br /> Splitting Bills With Friends
+            </motion.h1>
 
+            <motion.p
+              variants={subtitleVariants}
+              className="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed text-lg mt-8 mb-12"
+            >
+              Track shared expenses, split bills effortlessly, and settle up
+              quickly. Never worry about who owes who again.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col items-center gap-10 sm:flex-row justify-center mt-16"
+              variants={itemVariants}
+            >
+              <motion.div
+                custom={0}
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="px-12 py-4 text-[18px] font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300"
+                >
+                  <Link href="/dashboard" className="flex items-center gap-2">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                custom={1}
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="px-10 py-4 text-[18px] font-semibold border-2 border-gray-300 text-gray-700 hover:bg-gray-50 rounded-lg transition-all duration-300"
+                >
+                  <Link href="#how-it-works">See How It Works</Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+
+      {/* Rest of the sections (stats, image, features) without texture */}
       {/*----------Stats Section--------*/}
+<<<<<<< feature/DarkMode
       <section className="py-14 bg-blue-50 dark:bg-blue-950/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -94,11 +321,86 @@ const HeroSection = () => {
                 <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{value}</div>
                 <div className="text-gray-600 dark:text-gray-300 font-medium">{label}</div>
               </div>
+=======
+      <motion.section
+        className="py-16 bg-white"
+        variants={statsVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="container mx-auto px-4">
+
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mx-10 md:mx-16 lg:mx-24">
+            {[
+              {
+                icon: "👥",
+                value: "10K+",
+                label: "Active Users",
+                color: "from-blue-500 to-blue-600"
+              },
+              {
+                icon: "💰",
+                value: "50K+",
+                label: "Expenses Split",
+                color: "from-green-500 to-green-600"
+              },
+              {
+                icon: "⚡",
+                value: "100+",
+                label: "Tools & Features",
+                color: "from-purple-500 to-purple-600"
+              },
+              {
+                icon: "⭐",
+                value: "4.9",
+                label: "User Rating",
+                color: "from-orange-500 to-orange-600"
+              }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center group"
+                variants={statItemVariants}
+                whileHover="hover"
+                custom={index}
+              >
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 group-hover:scale-105">
+                  {/* Icon */}
+                  <div className={`w-14 h-14 mx-auto mb-4 rounded-lg bg-blue-100 flex items-center justify-center text-2xl text-blue-600 group-hover:scale-110 transition-transform duration-300`}>
+                    {stat.icon}
+                  </div>
+
+                  {/* Value */}
+                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    {stat.value}
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-gray-600 font-medium text-sm md:text-base">
+                    {stat.label}
+                  </div>
+                </div>
+              </motion.div>
+>>>>>>> main
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
+      <motion.div
+        className="text-center mb-12"
+        variants={itemVariants}
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Trusted by Thousands
+        </h2>
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          Join our growing community of users who trust Splitr for their expense management
+        </p>
+      </motion.div>
 
+<<<<<<< feature/DarkMode
      {/* ───── Features ───── */}
       <section id="features" className="bg-background py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
@@ -112,16 +414,67 @@ const HeroSection = () => {
 
           {/* Title */}
           <h1 className="mt-2 text-4xl font-semibold md:text-4xl text-foreground">
+=======
+      <motion.div
+        className="hero-image-wrapper container mx-auto max-w-[1120px] overflow-hidden"
+        variants={imageVariants}
+        whileHover="hover"
+      >
+        <div ref={imageRef} className="hero-image">
+          <Image
+            src="/hero.jpeg"
+            width={1280}
+            height={720}
+            alt="Banner"
+            className="h-160 w-340 mx-auto mb-6"
+            priority
+          />
+        </div>
+      </motion.div>
+      {/* ───── Features ───── */}
+      <motion.section
+        id="features"
+        className="bg-white py-20"
+        variants={featuresVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          {/* Section Badge */}
+          <motion.div variants={badgeVariants}>
+            <Badge
+              variant="outline"
+              className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border"
+            >
+              Features
+            </Badge>
+          </motion.div>
+
+          {/* Title */}
+          <motion.h1
+            variants={titleVariants}
+            className="mt-2 text-4xl font-semibold md:text-4xl"
+          >
+>>>>>>> main
             Everything you need to Split Expenses
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
+<<<<<<< feature/DarkMode
           <p className="mx-auto mt-3 max-w-[700px] text-muted-foreground md:text-xl/relaxed">
+=======
+          <motion.p
+            variants={subtitleVariants}
+            className="mx-auto mt-3 max-w-[700px] text-gray-500 md:text-xl/relaxed"
+          >
+>>>>>>> main
             Our platform provides all the tools you need to handle <br />
             shared expenses with ease.
-          </p>
+          </motion.p>
 
           {/* Features Grid */}
+<<<<<<< feature/DarkMode
           <div className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map(({ id, title, Icon, bg, color, description }) => (
               <Card
@@ -134,16 +487,38 @@ const HeroSection = () => {
             hover:scale-105 
             cursor-pointer text-center
           "
+=======
+          <motion.div
+            className="mx-auto mt-12 grid max-w-[1120px] gap-8 md:grid-cols-2 lg:grid-cols-3"
+            variants={itemVariants}
+          >
+            {FEATURES.map(({ title, Icon, bg, color, description }, index) => (
+              <motion.div
+                key={title}
+                variants={featureCardVariants}
+                whileHover="hover"
+                custom={index}
+>>>>>>> main
               >
-                {/* Icon Wrapper */}
-                <div
-                  className={`rounded-full p-4 transition-all duration-300 transform hover:rotate-6 ${bg}`}
-                >
-                  <Icon
-                    className={`h-8 w-8 ${color} transition-colors duration-300`}
-                  />
-                </div>
+                <Card className="
+                  flex flex-col items-center space-y-4 p-6 
+                  bg-white rounded-xl 
+                  shadow-md hover:shadow-xl 
+                  transform transition-all duration-300 
+                  cursor-pointer text-center
+                ">
+                  {/* Icon Wrapper */}
+                  <motion.div
+                    className={`rounded-full p-4 transition-all duration-300 transform hover:rotate-6 ${bg}`}
+                    whileHover={{ rotate: 6, scale: 1.1 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
+                    <Icon
+                      className={`h-8 w-8 ${color} transition-colors duration-300`}
+                    />
+                  </motion.div>
 
+<<<<<<< feature/DarkMode
                 {/* Feature Title */}
                 <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 text-foreground">
                   {title}
@@ -152,12 +527,23 @@ const HeroSection = () => {
                 {/* Feature Description */}
                 <p className="text-muted-foreground">{description}</p>
               </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  )
-}
+=======
+                  {/* Feature Title */}
+                  <h3 className="text-[22px] font-bold transition-colors duration-300 hover:text-blue-600">
+                    {title}
+                  </h3>
 
-export default HeroSection
+                  {/* Feature Description */}
+                  <p className="text-gray-600">{description}</p>
+                </Card>
+              </motion.div>
+>>>>>>> main
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+    </motion.div>
+  );
+};
+
+export default HeroSection;

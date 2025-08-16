@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/logos/logo-s.png" sizes="any" />
       </head>
       <body className={`${inter.className}`}>
+<<<<<<< feature/DarkMode
         <ThemeProvider>
           <ClerkProvider
             publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
@@ -35,6 +36,20 @@ export default function RootLayout({ children }) {
             </ConvexClientProvider>
           </ClerkProvider>
         </ThemeProvider>
+=======
+        <ClerkProvider
+          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+        >
+          <ConvexClientProvider>
+            <Header />
+            <main className="min-h-screen p-0 m-0">
+              <Toaster richColors />
+              {children}
+            </main>
+            <ScrollToTop /> {/* 👈 Added here */}
+          </ConvexClientProvider>
+        </ClerkProvider>
+>>>>>>> main
       </body>
     </html>
   );
