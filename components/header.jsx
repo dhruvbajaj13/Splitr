@@ -119,7 +119,7 @@ export default function Header() {
 
   // Close mobile menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
+    const handleClickOutside = (event) => {
       if (isMobileMenuOpen && !event.target.closest("nav")) {
         setIsMobileMenuOpen(false);
       }
