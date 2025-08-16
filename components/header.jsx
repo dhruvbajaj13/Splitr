@@ -151,7 +151,7 @@ export default function Header() {
     []
   );
 
-  const handleNavClick = useCallback((href: string) => {
+  const handleNavClick = useCallback((href) => {
     setActiveHash(href);
     setIsMobileMenuOpen(false);
   }, []);
@@ -163,7 +163,7 @@ export default function Header() {
   );
 
   const getUnderlineClasses = useCallback(
-    (href: string) =>
+    (href) =>
       `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${
         activeHash === href
           ? "w-full opacity-100"
