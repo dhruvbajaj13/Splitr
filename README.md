@@ -128,8 +128,8 @@ A short and simple permissive license with conditions only requiring preservatio
 
 # 💬Connect with the Project Admin
 ![WhatsApp Image 2025-08-12 at 12 39 55_c3003da7](https://github.com/user-attachments/assets/24548154-51f3-4c2c-88f4-562bcadc2b56)
-
- [Github](https://github.com/dhruvbajaj13) | [Linkedin](https://www.linkedin.com/in/dhruvbajaj13)
+ 
+   [Github](https://github.com/dhruvbajaj13) | [Linkedin](https://www.linkedin.com/in/dhruvbajaj13)
 
 
 

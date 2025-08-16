@@ -61,7 +61,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card className="shadow-md border-2">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg font-semibold mb-[-5px] text-gray-700">
+                <CardTitle className="text-lg font-semibold mb-[-5px] text-gray-700 dark:text-gray-300">
                   Total Balance
                 </CardTitle>
               </CardHeader>
@@ -91,7 +91,7 @@ export default function Dashboard() {
 
             <Card className="shadow-md border-2">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg font-semibold mb-[-5px] text-gray-700">
+                <CardTitle className="text-lg font-semibold mb-[-5px] text-gray-700 dark:text-gray-300">
                   You are owed
                 </CardTitle>
               </CardHeader>
@@ -107,7 +107,7 @@ export default function Dashboard() {
 
             <Card className="shadow-md border-2">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg font-semibold mb-[-5px] text-gray-700">
+                <CardTitle className="text-lg font-semibold mb-[-5px] text-gray-700 dark:text-gray-300">
                   You owe
                 </CardTitle>
               </CardHeader>
