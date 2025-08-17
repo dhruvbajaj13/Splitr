@@ -26,7 +26,7 @@ export default function Header() {
 
   const path = usePathname();
 
-  // Enhanced color extraction with better sampling and palette generation
+  // Extract colors from logo
   const extractColorPalette = useCallback(async () => {
     try {
       const img = new window.Image();
@@ -49,7 +49,6 @@ export default function Header() {
       const imageData = ctx.getImageData(0, 0, 64, 64);
       const data = imageData.data;
 
-      // Color frequency analysis
       const colorMap = new Map();
       for (let i = 0; i < data.length; i += 4) {
         const r = data[i];
@@ -58,14 +57,11 @@ export default function Header() {
         const a = data[i + 3];
 
         if (a > 128) {
-          const key = `${Math.floor(r / 8) * 8},${Math.floor(g / 8) * 8},${
-            Math.floor(b / 8) * 8
-          }`;
+          const key = `${Math.floor(r / 8) * 8},${Math.floor(g / 8) * 8},${Math.floor(b / 8) * 8}`;
           colorMap.set(key, (colorMap.get(key) || 0) + 1);
         }
       }
 
-      // Find dominant color
       let dominantColor = null;
       let maxCount = 0;
       for (const [color, count] of colorMap.entries()) {
@@ -94,20 +90,14 @@ export default function Header() {
 
   // Scroll detection
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Hash detection
   useEffect(() => {
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash);
-    };
-
+    const handleHashChange = () => setActiveHash(window.location.hash);
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
@@ -124,18 +114,13 @@ export default function Header() {
         setIsMobileMenuOpen(false);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isMobileMenuOpen]);
 
-  // Prevent scroll when mobile menu is open
+  // Prevent scroll when menu open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -157,8 +142,7 @@ export default function Header() {
   }, []);
 
   const navLinkClasses = useMemo(
-    () =>
-      "relative group font-medium transition-all duration-300 text-gray-700 hover:text-gray-900 py-2 px-1",
+    () => "relative group font-medium transition-all duration-300 text-gray-700 hover:text-gray-900 py-2 px-1",
     []
   );
 
@@ -175,11 +159,7 @@ export default function Header() {
   // Motion variants
   const headerVariants = {
     hidden: { y: -20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
-    },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] } },
   };
 
   const navItemVariants = {
@@ -195,16 +175,14 @@ export default function Header() {
     <>
       <motion.header
         className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg"
-            : "bg-white/80 backdrop-blur-sm"
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80 backdrop-blur-sm"
         }`}
         style={{
-          ["--brand" as any]: colorPalette.brand,
-          ["--brand-hover" as any]: colorPalette.brandHover,
-          ["--brand-text" as any]: colorPalette.brandText,
-          ["--brand-light" as any]: colorPalette.brandLight,
-          ["--brand-muted" as any]: colorPalette.brandMuted,
+          "--brand": colorPalette.brand,
+          "--brand-hover": colorPalette.brandHover,
+          "--brand-text": colorPalette.brandText,
+          "--brand-light": colorPalette.brandLight,
+          "--brand-muted": colorPalette.brandMuted,
         }}
         variants={headerVariants}
         initial="hidden"
@@ -227,18 +205,8 @@ export default function Header() {
           {path === "/" && (
             <ul className="hidden lg:flex items-center gap-8 xl:gap-12 absolute left-1/2 -translate-x-1/2">
               {navItems.map(({ href, label }, index) => (
-                <motion.li
-                  key={href}
-                  custom={index}
-                  variants={navItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <Link
-                    href={href}
-                    className={navLinkClasses}
-                    onClick={() => handleNavClick(href)}
-                  >
+                <motion.li key={href} custom={index} variants={navItemVariants} initial="hidden" animate="visible">
+                  <Link href={href} className={navLinkClasses} onClick={() => handleNavClick(href)}>
                     {label}
                     <motion.span
                       className={getUnderlineClasses(href)}
@@ -267,12 +235,7 @@ export default function Header() {
                     <LayoutDashboard className="h-4 w-4" />
                   </Button>
                 </Link>
-                <UserButton
-                  appearance={{
-                    elements: { avatarBox: "w-10 h-10" },
-                  }}
-                  afterSignOutUrl="/"
-                />
+                <UserButton appearance={{ elements: { avatarBox: "w-10 h-10" } }} afterSignOutUrl="/" />
               </>
             ) : (
               <>
@@ -294,9 +257,7 @@ export default function Header() {
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
               aria-label="Toggle menu"
             >
-              <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? <X /> : <Menu />}
-              </AnimatePresence>
+              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X /> : <Menu />}</AnimatePresence>
             </motion.button>
           </div>
         </nav>
@@ -309,7 +270,7 @@ export default function Header() {
 }
 
 // Utils
-function rgbToHex(r: number, g: number, b: number) {
+function rgbToHex(r, g, b) {
   return (
     "#" +
     [r, g, b]
@@ -321,7 +282,7 @@ function rgbToHex(r: number, g: number, b: number) {
   );
 }
 
-function getContrastText(hexColor: string) {
+function getContrastText(hexColor) {
   const color = hexColor.replace("#", "");
   const r = parseInt(color.substr(0, 2), 16);
   const g = parseInt(color.substr(2, 2), 16);
@@ -331,7 +292,7 @@ function getContrastText(hexColor: string) {
   return luminance > 0.5 ? "#111111" : "#FFFFFF";
 }
 
-function shadeColor(hex: string, percent: number) {
+function shadeColor(hex, percent) {
   const color = hex.replace("#", "");
   const num = parseInt(color, 16);
   const amt = Math.round(2.55 * percent);
