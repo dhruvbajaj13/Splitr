@@ -71,17 +71,17 @@ export default function LandingPage() {
           <motion.p className="mx-auto mt-3 max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed" variants={itemVariants}>
             Follow these simple steps to start tracking and splitting <br/> expenses
             with friends :-
-          </p>
+          </motion.p>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
+          <motion.div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
             {STEPS.map(({ icon, title, description }) => (
               <div key={icon} className="flex flex-col items-center space-y-4">
                 <div className="flex h-12 w-12 items-center justify-center border rounded-full bg-blue-200 text-lg font-bold text-blue-800">
                   {icon}
-                </motion.div>
+                </div>
                 <h3 className="text-[22px] font-bold text-foreground">{title}</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-center">{description}</p>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </motion.div>
@@ -94,10 +94,10 @@ export default function LandingPage() {
             Testimonials
           </Badge>
           <motion.h1 className="font-semibold mt-2 text-5xl md:text-4xl text-foreground" variants={itemVariants}>
-            What Our Users Say
-          </h1>
+          What Our Users Say</motion.h1>
 
-          <div className="mx-auto mt-8 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+          <motion.div className="mx-auto mt-8 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
             {TESTIMONIALS.map(({ quote, name, role, image }) => (
               <Card key={name} className="flex flex-col justify-between">
                 <CardContent className="space-y-4 px-6 pl-3 py-2">

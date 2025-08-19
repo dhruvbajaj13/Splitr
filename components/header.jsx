@@ -200,11 +200,11 @@ export default function Header() {
             : "bg-white/80 backdrop-blur-sm"
         }`}
         style={{
-          ["--brand" as any]: colorPalette.brand,
-          ["--brand-hover" as any]: colorPalette.brandHover,
-          ["--brand-text" as any]: colorPalette.brandText,
-          ["--brand-light" as any]: colorPalette.brandLight,
-          ["--brand-muted" as any]: colorPalette.brandMuted,
+          ["--brand"]: colorPalette.brand,
+          ["--brand-hover"]: colorPalette.brandHover,
+          ["--brand-text" ]: colorPalette.brandText,
+          ["--brand-light"]: colorPalette.brandLight,
+          ["--brand-muted"]: colorPalette.brandMuted,
         }}
         variants={headerVariants}
         initial="hidden"
@@ -216,9 +216,9 @@ export default function Header() {
             <Image
               src="/logos/logo1.png"
               alt="Vehiql Logo"
-              height={140}
-              width={200}
-              className="h-12 lg:h-16 w-auto object-contain"
+              height={180}
+              width={280}
+              className="h-12 pl-4 md:h-30 md:w-26 object-contain"
               priority
             />
           </Link>
@@ -251,19 +251,19 @@ export default function Header() {
           )}
 
           {/* Right side buttons */}
-          <div className="flex items-center gap-4">
+          <div className=" flex items-center gap-4 lg:gap-6">
             <ThemeToggle />
             {isSignedIn ? (
               <>
                 <Link href="/dashboard">
                   <Button
                     variant="outline"
-                    className="hidden md:inline-flex items-center gap-2 text-foreground cursor-pointer bg-secondary hover:text-primary transition-all"
-                  >
+                    className="hidden md:inline-flex items-center gap-2 text-foreground cursor-pointer bg-secondary hover:text-primary transition-all
+                     dark:bg-black dark:text-white dark:hover:bg-zinc-700">
                     <LayoutDashboard className="h-4 w-4" />
                     Dashboard
                   </Button>
-                  <Button variant="ghost" className="md:hidden w-10 h-10 p-0">
+                  <Button variant="ghost" className="md:hidden w-10 h-10 p-0 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-800">
                     <LayoutDashboard className="h-4 w-4" />
                   </Button>
                 </Link>
@@ -309,7 +309,7 @@ export default function Header() {
 }
 
 // Utils
-function rgbToHex(r: number, g: number, b: number) {
+function rgbToHex(r, g, b) {
   return (
     "#" +
     [r, g, b]
@@ -321,7 +321,7 @@ function rgbToHex(r: number, g: number, b: number) {
   );
 }
 
-function getContrastText(hexColor: string) {
+function getContrastText(hexColor) {
   const color = hexColor.replace("#", "");
   const r = parseInt(color.substr(0, 2), 16);
   const g = parseInt(color.substr(2, 2), 16);
@@ -331,7 +331,7 @@ function getContrastText(hexColor: string) {
   return luminance > 0.5 ? "#111111" : "#FFFFFF";
 }
 
-function shadeColor(hex: string, percent: number) {
+function shadeColor( hex, percent) {
   const color = hex.replace("#", "");
   const num = parseInt(color, 16);
   const amt = Math.round(2.55 * percent);
