@@ -19,19 +19,24 @@ export const createExpense = mutation({
       })
     ),
     groupId: v.optional(v.id("groups")),
-    receiptStorageId: v.optional(v.id("_storage")), // ✅ added for file uploads
+    receiptStorageId: v.optional(v.id("_storage")),
   },
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) throw new Error("Authentication required");
 
     if (args.groupId) {
       const group = await ctx.db.get(args.groupId);
       if (!group) throw new Error("Group not found");
 
-      const isMember = group.members.some(
+      const isMember = group.members?.some(
         (member) => member.userId === user._id
       );
       if (!isMember) throw new Error("You are not a member of this group");
+    }
+
+    if (!args.splits || args.splits.length === 0) {
+      throw new Error("At least one split is required");
     }
 
     // Verify splits = total
@@ -41,24 +46,30 @@ export const createExpense = mutation({
     );
     const tolerance = 0.01;
     if (Math.abs(totalSplitAmount - args.amount) > tolerance) {
-      throw new Error("Split amounts must add up to the total expense amount");
+      throw new Error(
+        `Split amounts (${totalSplitAmount}) must add up to the total expense amount (${args.amount})`
+      );
     }
 
-    // Insert expense
-    const expenseId = await ctx.db.insert("expenses", {
-      description: args.description,
-      amount: args.amount,
-      category: args.category || "Other",
-      date: args.date,
-      paidByUserId: args.paidByUserId,
-      splitType: args.splitType,
-      splits: args.splits,
-      groupId: args.groupId,
-      createdBy: user._id,
-      receiptStorageId: args.receiptStorageId || null, // ✅ store receipt reference
-    });
+    try {
+      const expenseId = await ctx.db.insert("expenses", {
+        description: args.description,
+        amount: args.amount,
+        category: args.category || "Other",
+        date: args.date,
+        paidByUserId: args.paidByUserId,
+        splitType: args.splitType,
+        splits: args.splits,
+        groupId: args.groupId || null,
+        createdBy: user._id,
+        receiptStorageId: args.receiptStorageId || null,
+      });
 
-    return expenseId;
+      return expenseId;
+    } catch (err) {
+      console.error("❌ Failed to insert expense:", err);
+      throw new Error("Failed to create expense");
+    }
   },
 });
 
@@ -67,6 +78,7 @@ export const getExpensesBetweenUsers = query({
   args: { userId: v.id("users") },
   handler: async (ctx, { userId }) => {
     const me = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!me) throw new Error("Authentication required");
     if (me._id === userId) throw new Error("Cannot query yourself");
 
     // Fetch one-on-one expenses
@@ -161,6 +173,8 @@ export const deleteExpense = mutation({
   },
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) throw new Error("Authentication required");
+
     const expense = await ctx.db.get(args.expenseId);
     if (!expense) throw new Error("Expense not found");
 
@@ -190,7 +204,6 @@ export const deleteExpense = mutation({
       }
     }
 
-    // ✅ delete attached receipt file if exists
     if (expense.receiptStorageId) {
       await ctx.storage.delete(expense.receiptStorageId);
     }
