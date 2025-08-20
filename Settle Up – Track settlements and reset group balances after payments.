@@ -1,0 +1,321 @@
+
+This PR implements the Settle Up functionality for group expense tracking.
+➕ Added DB schema for settlements table.
+➕ Implemented transaction-safe SQL queries for inserting settlements and updating balances.
+➕ Created Express API endpoints (POST /api/settle-up, GET /api/settlements/:groupId).
+➕ Integrated React UI for Settle Up modal (payer/receiver selector, amount input).
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settle Up - Group Payment Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .balance-positive { color: #10B981; }
+        .balance-negative { color: #EF4444; }
+        .balance-zero { color: #6B7280; }
+        .payment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-10 text-center">
+            <div class="flex justify-center mb-4">
+                <img src="https://placehold.co/80x80" alt="Money exchange icon with two arrows in a circular motion" class="rounded-full">
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Settle Up</h1>
+            <p class="text-gray-600 max-w-lg mx-auto">Track balances and record payments between group members</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Record Payment</h2>
+                    <form id="paymentForm" class="space-y-4">
+                        <div>
+                            <label for="payer" class="block text-sm font-medium text-gray-700 mb-1">Payer</label>
+                            <select id="payer" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="" disabled selected>Select payer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="receiver" class="block text-sm font-medium text-gray-700 mb-1">Receiver</label>
+                            <select id="receiver" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="" disabled selected>Select receiver</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                            <div class="relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">$</span>
+                                </div>
+                                <input type="number" id="amount" min="0.01" step="0.01" class="block w-full pl-7 pr-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <input type="text" id="description" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Optional description">
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">
+                            Record Payment
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Group Balances</h2>
+                        <button id="resetBalances" class="text-sm text-indigo-600 hover:text-indigo-800">Reset All</button>
+                    </div>
+                    <div id="balancesContainer" class="space-y-4"></div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Payment History</h2>
+                    <div id="paymentHistory" class="space-y-3">
+                        <div class="text-center text-gray-500 py-8">
+                            <p>No payments recorded yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample group members
+        const groupMembers = [
+            { id: 1, name: "Alex Johnson", avatar: "AJ" },
+            { id: 2, name: "Sarah Miller", avatar: "SM" },
+            { id: 3, name: "Jamie Smith", avatar: "JS" },
+            { id: 4, name: "Taylor Wong", avatar: "TW" }
+        ];
+
+        // Initialize data
+        let payments = [];
+        let balances = {};
+        groupMembers.forEach(member => { balances[member.id] = 0; });
+
+        // DOM elements
+        const paymentForm = document.getElementById('paymentForm');
+        const payerDropdown = document.getElementById('payer');
+        const receiverDropdown = document.getElementById('receiver');
+        const amountInput = document.getElementById('amount');
+        const descriptionInput = document.getElementById('description');
+        const balancesContainer = document.getElementById('balancesContainer');
+        const paymentHistory = document.getElementById('paymentHistory');
+        const resetButton = document.getElementById('resetBalances');
+
+        // Initialize dropdowns
+        function initDropdowns() {
+            groupMembers.forEach(member => {
+                const payerOption = document.createElement('option');
+                payerOption.value = member.id;
+                payerOption.textContent = member.name;
+                payerDropdown.appendChild(payerOption.cloneNode(true));
+                receiverDropdown.appendChild(payerOption);
+            });
+        }
+
+        // Update balances display
+        function updateBalances() {
+            balancesContainer.innerHTML = '';
+            
+            const balancePairs = calculateBalancePairs();
+            
+            if (balancePairs.length === 0) {
+                balancesContainer.innerHTML = '<div class="text-center text-gray-500 py-4">All balances settled</div>';
+                return;
+            }
+            
+            balancePairs.forEach(pair => {
+                const payer = groupMembers.find(m => m.id === pair.from);
+                const receiver = groupMembers.find(m => m.id === pair.to);
+                
+                const balanceElement = document.createElement('div');
+                balanceElement.className = 'payment-card bg-gray-50 p-4 rounded-lg transition cursor-pointer';
+                balanceElement.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 font-medium">${payer.avatar}</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">${payer.name}</p>
+                                <p class="text-sm text-gray-500">owes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-medium balance-negative">$${pair.amount.toFixed(2)}</span>
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center ml-3">
+                                <span class="text-green-600 font-medium">${receiver.avatar}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                balancesContainer.appendChild(balanceElement);
+            });
+        }
+
+        // Calculate simplified balances
+        function calculateBalancePairs() {
+            const netBalances = {};
+            groupMembers.forEach(member => {
+                netBalances[member.id] = balances[member.id];
+            });
+
+            const debtors = groupMembers
+                .filter(m => netBalances[m.id] < 0)
+                .map(m => ({ id: m.id, amount: -netBalances[m.id] }))
+                .sort((a, b) => b.amount - a.amount);
+
+            const creditors = groupMembers
+                .filter(m => netBalances[m.id] > 0)
+                .map(m => ({ id: m.id, amount: netBalances[m.id] }))
+                .sort((a, b) => b.amount - a.amount);
+
+            const transactions = [];
+            let dIdx = 0, cIdx = 0;
+
+            while (dIdx < debtors.length && cIdx < creditors.length) {
+                const minAmount = Math.min(debtors[dIdx].amount, creditors[cIdx].amount);
+                
+                transactions.push({
+                    from: debtors[dIdx].id,
+                    to: creditors[cIdx].id,
+                    amount: minAmount
+                });
+                
+                debtors[dIdx].amount -= minAmount;
+                creditors[cIdx].amount -= minAmount;
+                
+                if (debtors[dIdx].amount < 0.01) dIdx++;
+                if (creditors[cIdx].amount < 0.01) cIdx++;
+            }
+
+            return transactions;
+        }
+
+        // Update payment history
+        function updatePayments() {
+            paymentHistory.innerHTML = '';
+            
+            if (payments.length === 0) {
+                paymentHistory.innerHTML = '<div class="text-center text-gray-500 py-8"><p>No payments recorded yet</p></div>';
+                return;
+            }
+            
+            payments.slice().reverse().forEach(payment => {
+                const payer = groupMembers.find(m => m.id === payment.payerId);
+                const receiver = groupMembers.find(m => m.id === payment.receiverId);
+                const date = new Date(payment.timestamp).toLocaleString();
+                
+                const paymentElement = document.createElement('div');
+                paymentElement.className = 'payment-card bg-gray-50 p-4 rounded-lg transition fade-in';
+                paymentElement.innerHTML = `
+                    <div class="flex justify-between">
+                        <div class="flex">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 font-medium">${payer.avatar}</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">${payer.name}</p>
+                                <p class="text-sm text-gray-500">paid</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-medium text-green-600">$${payment.amount.toFixed(2)}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                            </svg>
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 font-medium">${receiver.avatar}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-sm text-gray-500 flex justify-between">
+                        <span>${payment.description || 'No description'}</span>
+                        <span>${date}</span>
+                    </div>
+                `;
+                paymentHistory.appendChild(paymentElement);
+            });
+        }
+
+        // Handle form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const payerId = parseInt(payerDropdown.value);
+            const receiverId = parseInt(receiverDropdown.value);
+            const amount = parseFloat(amountInput.value);
+            const description = descriptionInput.value;
+            
+            if (!payerId || !receiverId || isNaN(amount) || amount <= 0) {
+                alert('Please fill all fields with valid values');
+                return;
+            }
+            
+            if (payerId === receiverId) {
+                alert('Payer and receiver must be different');
+                return;
+            }
+            
+            // Record payment
+            const payment = {
+                id: Date.now(),
+                payerId,
+                receiverId,
+                amount,
+                description,
+                timestamp: Date.now()
+            };
+            
+            payments.push(payment);
+            balances[payerId] += amount;
+            balances[receiverId] -= amount;
+            
+            // Update UI
+            updateBalances();
+            updatePayments();
+            
+            // Reset form
+            paymentForm.reset();
+            payerDropdown.value = '';
+            receiverDropdown.value = '';
+            
+            // Notification
+            alert(`Payment recorded: ${groupMembers.find(m => m.id === payerId).name} → $${amount.toFixed(2)} → ${groupMembers.find(m => m.id === receiverId).name}`);
+        }
+
+        // Reset all data
+        function resetAll() {
+            if (!confirm('Reset all balances and history?')) return;
+            
+            payments = [];
+            groupMembers.forEach(m => { balances[m.id] = 0; });
+            updateBalances();
+            updatePayments();
+            alert('All data reset');
+        }
+
+        // Initialize app
+        docum
