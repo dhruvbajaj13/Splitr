@@ -318,14 +318,4 @@ This PR implements the Settle Up functionality for group expense tracking.
         }
 
         // Initialize app
-        document.addEventListener('DOMContentLoaded', () => {
-            initDropdowns();
-            updateBalances();
-            updatePayments();
-            
-            paymentForm.addEventListener('submit', handleSubmit);
-            resetButton.addEventListener('click', resetAll);
-        });
-    </script>
-</body>
-</html>
+        docum
