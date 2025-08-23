@@ -221,9 +221,12 @@ export default function Header() {
 
           {/* Right side buttons */}
           <div className=" flex items-center gap-4 lg:gap-6">
-          <div className="relative w-10 h-10 mr-4 sm:mr-6 md:mr-10 lg:mr-120">
-            <ThemeToggle />
+          <div className="flex items-center space-x-2">
+            <UserButton />
+            <div className="flex items-center justify-center w-10 h-10">
+              <ThemeToggle />
             </div>
+          </div>
             {isSignedIn ? (
               <>
                 <Link href="/dashboard">
