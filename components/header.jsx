@@ -220,10 +220,7 @@ export default function Header() {
           )}
 
           {/* Right side buttons */}
-          <div className=" flex items-center gap-4 lg:gap-6">
-          <div className="relative w-10 h-10 mr-4 sm:mr-6 md:mr-10 lg:mr-120">
-            <ThemeToggle />
-            </div>
+          <div className="flex items-center gap-4 lg:gap-6">
             {isSignedIn ? (
               <>
                 <Link href="/dashboard">
@@ -238,13 +235,16 @@ export default function Header() {
                     <LayoutDashboard className="h-4 w-4" />
                   </Button>
                 </Link>
-                <UserButton appearance={{ elements: { avatarBox: "w-10 h-10" } }} afterSignOutUrl="/" />
+                <div className="flex items-center gap-2">
+                  <ThemeToggle />
+                  <UserButton appearance={{ elements: { avatarBox: "w-10 h-10" } }} afterSignOutUrl="/" />
+                </div>
               </>
             ) : (
               <>
+                <ThemeToggle />
                 <SignInButton mode="modal">
                   <button className="signin-btn px-5 py-2.5 text-sm font-medium rounded-lg border-2 text-black dark:text-black">
-
                     Sign in
                   </button>
                 </SignInButton>
