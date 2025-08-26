@@ -148,10 +148,9 @@ export default function Header() {
 
   const getUnderlineClasses = useCallback(
     (href) =>
-      `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${
-        activeHash === href
-          ? "w-full opacity-100"
-          : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
+      `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${activeHash === href
+        ? "w-full opacity-100"
+        : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
       }`,
     [activeHash]
   );
@@ -174,13 +173,12 @@ export default function Header() {
   return (
     <>
       <motion.header
-        className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80 backdrop-blur-sm"
-        }`}
+        className={`sticky top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80 backdrop-blur-sm"
+          }`}
         style={{
           ["--brand"]: colorPalette.brand,
           ["--brand-hover"]: colorPalette.brandHover,
-          ["--brand-text" ]: colorPalette.brandText,
+          ["--brand-text"]: colorPalette.brandText,
           ["--brand-light"]: colorPalette.brandLight,
           ["--brand-muted"]: colorPalette.brandMuted,
 
@@ -244,12 +242,15 @@ export default function Header() {
               <>
                 <ThemeToggle />
                 <SignInButton mode="modal">
-                  <button className="signin-btn px-5 py-2.5 text-sm font-medium rounded-lg border-2 text-black dark:text-black">
-                    Sign in
-                  </button>
+                  {/* <button className="signin-btn px-5 py-2.5 text-sm font-medium rounded-lg border-2 text-black dark:text-black dark:border-zinc-100 whitespace-nowrap">
+                    Sign In
+                  </button> */}
+                  <Button className=" h-11 px-3 text-sm font-medium rounded-lg border-2">
+                    Sign In
+                  </Button>
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <Button className="cta-btn h-11 px-6 text-sm font-medium rounded-lg border-2">
+                  <Button className=" h-11 px-6 text-sm font-medium rounded-lg border-2">
                     Get Started
                   </Button>
                 </SignUpButton>
@@ -261,8 +262,25 @@ export default function Header() {
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
               aria-label="Toggle menu"
             >
-              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X /> : <Menu />}</AnimatePresence>
+              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-slate-950"/> : <Menu className="text-slate-950" />}</AnimatePresence>
             </motion.button>
+            {/* Mobile Menu */}
+            <AnimatePresence>
+              {isMobileMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-16 left-0 w-full bg-white/95 dark:bg-white/95 shadow-md flex flex-col items-center space-y-4 py-8 lg:hidden"
+                >
+                  <a href="#features" className="text-gray-800 hover:text-blue-600" onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)}>Features</a>
+                  <a href="#about" className="text-gray-800 hover:text-blue-600" onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)}>About</a>                  
+                  <a href="#pricing" className="text-gray-800 hover:text-blue-600" onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)}>Pricing</a>
+                  <a href="#testimonials" className="text-gray-800 hover:text-blue-600" onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)}>Testimonials</a>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </nav>
 
