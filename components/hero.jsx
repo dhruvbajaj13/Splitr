@@ -337,7 +337,7 @@ const HeroSection = () => {
             width={1280}
             height={720}
             alt="Banner"
-            className="h-160 w-340 mx-auto mb-6"
+            className="lg:h-160 lg:w-340 mx-auto mb-6 "
             priority
           />
         </div>

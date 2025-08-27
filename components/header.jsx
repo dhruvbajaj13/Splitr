@@ -148,10 +148,9 @@ export default function Header() {
 
   const getUnderlineClasses = useCallback(
     (href) =>
-      `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${
-        activeHash === href
-          ? "w-full opacity-100"
-          : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
+      `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${activeHash === href
+        ? "w-full opacity-100"
+        : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
       }`,
     [activeHash]
   );
@@ -197,14 +196,15 @@ export default function Header() {
   }
   return (
     <>
-      <motion.header
+      <motion.header>
         className={`sticky top-0 w-full z-50 transition-all duration-300 dark:bg-blue-950 ${
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80  backdrop-blur-sm"
         }`}
+       
         style={{
           ["--brand"]: colorPalette.brand,
           ["--brand-hover"]: colorPalette.brandHover,
-          ["--brand-text" ]: colorPalette.brandText,
+          ["--brand-text"]: colorPalette.brandText,
           ["--brand-light"]: colorPalette.brandLight,
           ["--brand-muted"]: colorPalette.brandMuted,
 
@@ -268,12 +268,14 @@ export default function Header() {
               <>
                 <ThemeToggle />
                 <SignInButton mode="modal">
+
                   <button className="signin-btn h-11 px-2 w-20 text-sm font-medium rounded-lg border-2 bg-white text-black">
                     Sign in
                   </button>
+            
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <Button className="cta-btn h-11 px-6 text-sm font-medium rounded-lg border-2">
+                  <Button className=" h-11 px-6 text-sm font-medium rounded-lg border-2">
                     Get Started
                   </Button>
                 </SignUpButton>
@@ -285,9 +287,10 @@ export default function Header() {
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
               aria-label="Toggle menu"
             >
-              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X /> : <Menu />}</AnimatePresence>
+              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-slate-950"/> : <Menu className="text-slate-950" />}</AnimatePresence>
             </motion.button>
             {/* Mobile Menu */}
+
             <AnimatePresence mode="wait">
             {
               isMobileMenuOpen && 
@@ -319,7 +322,6 @@ export default function Header() {
                   ))}
                   
                  </motion.ul>
-            }
             </AnimatePresence>
           </div>
         </nav>
