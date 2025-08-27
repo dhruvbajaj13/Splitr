@@ -7,7 +7,7 @@ import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { BarLoader } from "react-spinners";
 import Image from "next/image";
 import { Menu, X, LayoutDashboard } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, stagger } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -142,7 +142,7 @@ export default function Header() {
   }, []);
 
   const navLinkClasses = useMemo(
-    () => "relative group font-medium transition-all duration-300 text-gray-700 hover:text-gray-900 py-2 px-1",
+    () => "relative group font-medium transition-all duration-300 text-gray-700 dark:text-slate-300 hover:text-gray-900 py-2 px-1",
     []
   );
 
@@ -170,12 +170,36 @@ export default function Header() {
       transition: { delay: 0.2 + i * 0.08, duration: 0.6 },
     }),
   };
+  
+  const containerVariants={
+    hidden:{opacity:0, width:0, x:-20},
+    visible:{
+      opacity:1, x:0, width:'auto',
+      transition:{
+        duration:0.2,
+        staggerChildren:0.1,
+        delayChildren:0.1,
+        when:"beforeChildren"
+      }
+    },
+    exit:{opacity:0, x:-20, width:0,
+      transition:{duration:0.2, 
+        when:'afterChildren',
+        staggerDirection:-1
+      }}
+  }
 
+  const itemVariants={
+    hidden:{opacity:0, x:10},
+    visible:{opacity:1, x:0, 
+      transition:{type:'spring', stiffness:300, damping:24}},
+    exit:{opacity:0, x:10,}
+  }
   return (
     <>
       <motion.header
-        className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80 backdrop-blur-sm"
+        className={`sticky top-0 w-full z-50 transition-all duration-300 dark:bg-blue-950 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80  backdrop-blur-sm"
         }`}
         style={{
           ["--brand"]: colorPalette.brand,
@@ -189,7 +213,7 @@ export default function Header() {
         initial="hidden"
         animate="visible"
       >
-        <nav className="relative container mx-auto px-4 lg:px-6 flex items-center justify-between h-16 lg:h-20">
+        <nav className="relative container mx-auto px-2 lg:px-6 flex items-center justify-between gap-10 h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -201,10 +225,10 @@ export default function Header() {
               priority
             />
           </Link>
-
+          
           {/* Desktop Nav Items */}
           {path === "/" && (
-            <ul className="hidden lg:flex items-center gap-8 xl:gap-12 absolute left-1/2 -translate-x-1/2">
+            <ul className="hidden lg:flex items-center gap-6 xl:gap-10 absolute left-1/2 -translate-x-1/2">
               {navItems.map(({ href, label }, index) => (
                 <motion.li key={href} custom={index} variants={navItemVariants} initial="hidden" animate="visible">
                   <Link href={href} className={navLinkClasses} onClick={() => handleNavClick(href)}>
@@ -220,7 +244,7 @@ export default function Header() {
           )}
 
           {/* Right side buttons */}
-          <div className="flex items-center gap-4 lg:gap-6">
+          <div className="flex items-center gap-2 lg:gap-2">
             {isSignedIn ? (
               <>
                 <Link href="/dashboard">
@@ -244,7 +268,7 @@ export default function Header() {
               <>
                 <ThemeToggle />
                 <SignInButton mode="modal">
-                  <button className="signin-btn px-5 py-2.5 text-sm font-medium rounded-lg border-2 text-black dark:text-black">
+                  <button className="signin-btn h-11 px-2 w-20 text-sm font-medium rounded-lg border-2 bg-white text-black">
                     Sign in
                   </button>
                 </SignInButton>
@@ -263,6 +287,40 @@ export default function Header() {
             >
               <AnimatePresence mode="wait">{isMobileMenuOpen ? <X /> : <Menu />}</AnimatePresence>
             </motion.button>
+            {/* Mobile Menu */}
+            <AnimatePresence mode="wait">
+            {
+              isMobileMenuOpen && 
+              
+                 <motion.ul 
+                  role="menu"
+                  initial='hidden'
+                  animate='visible'
+                  exit='exit'
+                  variants={containerVariants}
+                 className="fixed top-16 left-2 right-2 bg-white bg-gradient-to-br 
+              dark:from-blue-950 dark:via-background dark:to-blue-900
+              rounded-b-lg p-4 lg:hidden z-50  
+              shadow-gray-400 flex flex-col 
+              gap-6 px-4 py-4 shadow-lg">
+                  {navItems.map(({href, label}, index)=>(
+                    <motion.li 
+                     variants={itemVariants}
+                    key={index}
+                     > 
+                      <Link href={href} className={navLinkClasses} onClick={() => handleNavClick(href)}>
+                        {label}
+                        <motion.span
+                      className={getUnderlineClasses(href)}
+                      style={{ backgroundColor: colorPalette.brand }}
+                    />
+                      </Link>
+                    </motion.li>
+                  ))}
+                  
+                 </motion.ul>
+            }
+            </AnimatePresence>
           </div>
         </nav>
 
@@ -274,7 +332,7 @@ export default function Header() {
 }
 
 // Utils
-function rgbToHex(r, g, b) {
+function rgbToHex(r, g, b){
   return (
     "#" +
     [r, g, b]

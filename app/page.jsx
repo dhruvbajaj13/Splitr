@@ -6,10 +6,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import HeroSection from "@/components/hero";
+import  HeroSection  from "@/components/hero";
 import { motion } from "framer-motion";
 
 import { STEPS, TESTIMONIALS } from "@/lib/landing";
+
 
 //edit..
 const SOCIAL_LINKS = {
@@ -19,8 +20,9 @@ const SOCIAL_LINKS = {
   x: "https://x.com/splitrapp"                          // TODO: replace with real page if different
 };
 
-
 export default function LandingPage() {
+
+    
   const sectionVariants = {
     hidden: { opacity: 0, y: 24 },
     visible: {

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { api } from "@/convex/_generated/api";
 import { useConvexQuery } from "@/hooks/use-convex-query";
@@ -16,6 +16,7 @@ import Link from "next/link";
 import { ExpenseSummary } from "./components/expense-summary";
 import { BalanceSummary } from "./components/balance-summary";
 import { GroupList } from "./components/group-list";
+
 
 export default function Dashboard() {
   const { data: balances, isLoading: balancesLoading } = useConvexQuery(
