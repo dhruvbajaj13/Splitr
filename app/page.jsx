@@ -76,8 +76,8 @@ export default function LandingPage() {
           </motion.p>
 
           <motion.div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
-            {STEPS.map(({ icon, title, description }) => (
-              <div key={icon} className="flex flex-col items-center space-y-4">
+            {STEPS.map(({ icon, title, description, id }) => (
+              <div key={id} className="flex flex-col items-center space-y-4">
                 <div className="flex h-12 w-12 items-center justify-center border rounded-full bg-blue-200 text-lg font-bold text-blue-800">
                   {icon}
                 </div>
