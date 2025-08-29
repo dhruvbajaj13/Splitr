@@ -7,7 +7,7 @@ import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { BarLoader } from "react-spinners";
 import Image from "next/image";
 import { Menu, X, LayoutDashboard } from "lucide-react";
-import { motion, AnimatePresence, stagger } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 
