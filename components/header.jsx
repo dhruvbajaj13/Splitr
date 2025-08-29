@@ -196,7 +196,7 @@ export default function Header() {
   }
   return (
     <>
-      <motion.header>
+      <motion.header
         className={`sticky top-0 w-full z-50 transition-all duration-300 dark:bg-blue-950 ${
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80  backdrop-blur-sm"
         }`}
@@ -287,7 +287,7 @@ export default function Header() {
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
               aria-label="Toggle menu"
             >
-              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-slate-950"/> : <Menu className="text-slate-950" />}</AnimatePresence>
+              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-black dark:text-slate-300"/> : <Menu className="text-black dark:text-slate-300" />}</AnimatePresence>
             </motion.button>
             {/* Mobile Menu */}
 
