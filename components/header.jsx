@@ -309,7 +309,8 @@ export default function Header() {
                   {navItems.map(({href, label}, index)=>(
                     <motion.li 
                      variants={itemVariants}
-                    key={index}
+                    key={href}
+                      custom={index}
                      > 
                       <Link href={href} className={navLinkClasses} onClick={() => handleNavClick(href)}>
                         {label}
