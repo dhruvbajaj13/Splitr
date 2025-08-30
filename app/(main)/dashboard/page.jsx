@@ -17,6 +17,7 @@ import { ExpenseSummary } from "./components/expense-summary";
 import { BalanceSummary } from "./components/balance-summary";
 import { GroupList } from "./components/group-list";
 
+
 export default function Dashboard() {
   const { data: balances, isLoading: balancesLoading } = useConvexQuery(
     api.dashboard.getUserBalances

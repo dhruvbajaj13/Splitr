@@ -7,14 +7,17 @@ import Header from "@/components/header";
 import { Toaster } from "sonner";
 import ScrollToTop from "@/components/ScrollToTop";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Splitr",
+  title:"Splitr",
   description: "The smartest way to split expenses with friends",
 };
 
+
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

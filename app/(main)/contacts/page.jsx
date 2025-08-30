@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -12,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Plus, Users, User } from "lucide-react";
 import { CreateGroupModal } from "./components/create-group-modal";
 
+
 export default function ContactsPage() {
   const [isCreateGroupModalOpen, setIsCreateGroupModalOpen] = useState(false);
   const router = useRouter();
@@ -19,6 +21,7 @@ export default function ContactsPage() {
 
   const { data, isLoading } = useConvexQuery(api.contacts.getAllContacts);
 
+  
   // Check for the createGroup parameter when the component mounts
   useEffect(() => {
     const createGroupParam = searchParams.get("createGroup");
