@@ -323,6 +323,7 @@ export default function Header() {
                   ))}
                   
                  </motion.ul>
+            }
             </AnimatePresence>
           </div>
         </nav>
