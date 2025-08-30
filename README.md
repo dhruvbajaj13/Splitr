@@ -167,7 +167,7 @@ Please read our Contributing Guidelines before you start.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-**🌟Acknowledgments **
+**🌟Acknowledgments**
 
 * **[Clerk](https://clerk.com)** for authentication
 * **[Convex](https://convex.dev)** for backend services
@@ -238,7 +238,7 @@ Feel free to open issues or discussions if you have any feedback, feature sugges
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-**⭐️🙌 Show Your Support**
+**🙌 Show Your Support**
 
 *If you find Splitr project helpful, give it a star! ⭐ to support more such educational initiatives:*
 
@@ -296,7 +296,7 @@ This project is licensed under the MIT License - see the [`License`](https://git
 <table>
 <tr>
 <td align="center">
-<a href="https://github.com/dhruvbajaj13"><img src="https://github.com/user-attachments/assets/24548154-51f3-4c2c-88f4-562bcadc2b56" height="300px" width="500px" ></a><br><sub><a href="https://www.linkedin.com/in/dhruvbajaj13/"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/73993775/278833250-adb040ea-e3ef-446e-bcd4-3e8d7d4c0176.png" width="45px" height="45px"></a></sub>
+<a href="https://github.com/dhruvbajaj13"><img src="https://github.com/user-attachments/assets/24548154-51f3-4c2c-88f4-562bcadc2b56" align="center" height="300px" width="600px" ></a><br><sub><a href="https://www.linkedin.com/in/dhruvbajaj13/"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/73993775/278833250-adb040ea-e3ef-446e-bcd4-3e8d7d4c0176.png" width="45px" height="45px"></a></sub>
 </td>
 </tr>
 </table>
