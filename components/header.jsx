@@ -128,16 +128,19 @@ export default function Header() {
 
   const navItems = useMemo(
     () => [
-      { href: "#features", label: "Features" },
-      { href: "#how-it-work", label: "How it works" },
-      { href: "#pricing", label: "Pricing" },
-      { href: "#testimonials", label: "Testimonials" },
+      { href: "/#features", label: "Features" },
+      { href: "/#how-it-work", label: "How it works" },
+      { href: "/#pricing", label: "Pricing" },
+      { href: "/#testimonials", label: "Testimonials" },
+      { href: "/about", label: "About Us" },
     ],
     []
   );
 
   const handleNavClick = useCallback((href) => {
-    setActiveHash(href);
+    // Extract hash from href (e.g., "/#features" -> "#features")
+    const hash = href.includes('#') ? href.substring(href.indexOf('#')) : href;
+    setActiveHash(hash);
     setIsMobileMenuOpen(false);
   }, []);
 
@@ -147,11 +150,14 @@ export default function Header() {
   );
 
   const getUnderlineClasses = useCallback(
-    (href) =>
-      `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${activeHash === href
+    (href) => {
+      // Extract hash from href for comparison with activeHash
+      const hash = href.includes('#') ? href.substring(href.indexOf('#')) : href;
+      return `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${activeHash === hash
         ? "w-full opacity-100"
         : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
-      }`,
+      }`;
+    },
     [activeHash]
   );
 
@@ -227,7 +233,7 @@ export default function Header() {
           </Link>
           
           {/* Desktop Nav Items */}
-          {path === "/" && (
+          {(path === "/" || path === "/about") && (
             <ul className="hidden lg:flex items-center gap-6 xl:gap-10 absolute left-1/2 -translate-x-1/2">
               {navItems.map(({ href, label }, index) => (
                 <motion.li key={href} custom={index} variants={navItemVariants} initial="hidden" animate="visible">
@@ -282,18 +288,20 @@ export default function Header() {
               </>
             )}
             {/* Mobile Menu Toggle */}
-            <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
-              aria-label="Toggle menu"
-            >
-              <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-black dark:text-slate-300"/> : <Menu className="text-black dark:text-slate-300" />}</AnimatePresence>
-            </motion.button>
+            {(path === "/" || path === "/about") && (
+              <motion.button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
+                aria-label="Toggle menu"
+              >
+                <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-black dark:text-slate-300"/> : <Menu className="text-black dark:text-slate-300" />}</AnimatePresence>
+              </motion.button>
+            )}
             {/* Mobile Menu */}
 
             <AnimatePresence mode="wait">
             {
-              isMobileMenuOpen && 
+              isMobileMenuOpen && (path === "/" || path === "/about") && 
               
                  <motion.ul 
                   role="menu"
