@@ -129,7 +129,7 @@ export default function Header() {
   const navItems = useMemo(
     () => [
       { href: "#features", label: "Features" },
-      { href: "#about", label: "How it works" },
+      { href: "#how-it-work", label: "How it works" },
       { href: "#pricing", label: "Pricing" },
       { href: "#testimonials", label: "Testimonials" },
     ],

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import  HeroSection  from "@/components/hero";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { STEPS, TESTIMONIALS } from "@/lib/landing";
@@ -56,8 +57,8 @@ export default function LandingPage() {
 
       {/* ───── How it works ───── */}
       <motion.section
-        id="how-it-works"
-        className="py-10 bg-blue-50 dark:bg-blue-950/20"
+        id="how-it-work"
+        className="py-20 bg-blue-50 dark:bg-blue-950/20"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -90,7 +91,13 @@ export default function LandingPage() {
       </motion.section>
 
       {/* ───── Testimonials ───── */}
-      <motion.section className="bg-gray-50 dark:bg-gray-900/20 py-20" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+      <motion.section 
+       id="testimonials"
+       className="bg-gray-50 dark:bg-gray-900/20 py-20" 
+       variants={sectionVariants} 
+       initial="hidden" 
+       whileInView="visible" 
+       viewport={{ once: true, amount: 0.2 }}>
         <motion.div className="container mx-auto px-4 md:px-6 text-center" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <Badge variant="outline" className="bg-blue-100 text-[14px] text-blue-800 mb-[-0.5px] border ">
             Testimonials
@@ -118,7 +125,7 @@ export default function LandingPage() {
                     </div>
 
                   </div>
-                  <p className="text-gray-600 px-3">{quote}</p>
+                  <p className="text-gray-600 dark:text-gray-300 px-3">{quote}</p>
                 </CardContent>
               </Card>
             ))}
@@ -152,8 +159,8 @@ export default function LandingPage() {
         <div className="max-w-8xl mx-auto grid md:grid-cols-3 gap-8">
 
           <div class name="mr-10 pr-10">
-            <h2 className="text-2xl font-bold text-gray-800">Splitr</h2>
-            <p className="mt-2 text-md text-gray-500">
+            <Image src="/logos/logo1.png" alt="Splitr Logo" width={180} height={60} className="h-14 w-auto object-contain" />
+            <p className="mt-2 text-md text-gray-500 dark:text-gray-300">
               Settle smarter. Simplify group expenses and stay stress-free with Splitr.
               <br />Track shared expenses, split bills effortlessly, and settle up quickly. Never worry about who owes who again.
             </p>
@@ -165,7 +172,7 @@ export default function LandingPage() {
             <ul className="space-y-2 ">
               <li><a href={"/"} className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">Home</a></li>
               <li><a href="#features" className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">Features</a></li>
-              <li><a href="#how-it-works" className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">How It Works</a></li>
+              <li><a href="#how-it-work" className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">How It Works</a></li>
               <li><a href={"/dashboard"} className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">Dashboard</a></li>
             </ul>
           </div>
@@ -210,7 +217,7 @@ export default function LandingPage() {
                 />
               </a>
             </div>
-            <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-2">Legal</h3>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-300 mt-6 mb-2">Legal</h3>
             <ul className="space-y-2">
               <li><Link href="/privacy-policy" className="hover:text-blue-600 hover:underline cursor-pointer">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-blue-600 hover:underline cursor-pointer">Terms & Conditions</Link></li>
