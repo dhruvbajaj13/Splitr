@@ -158,7 +158,7 @@ export default function LandingPage() {
       <footer className="text-[#0e0e10] dark:text-gray-100 bg-white dark:bg-gray-900 py-8 px-18">
         <div className="max-w-8xl mx-auto grid md:grid-cols-3 gap-8">
 
-          <div class name="mr-10 pr-10">
+          <div className="mr-10 pr-10">
             <Image src="/logos/logo1.png" alt="Splitr Logo" width={180} height={60} className="h-14 w-auto object-contain" />
             <p className="mt-2 text-md text-gray-500 dark:text-gray-300">
               Settle smarter. Simplify group expenses and stay stress-free with Splitr.
@@ -171,6 +171,7 @@ export default function LandingPage() {
             <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Quick Links</h3>
             <ul className="space-y-2 ">
               <li><a href={"/"} className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">Home</a></li>
+              <li><a href="/about" className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">About Us</a></li>
               <li><a href="#features" className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">Features</a></li>
               <li><a href="#how-it-work" className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">How It Works</a></li>
               <li><a href={"/dashboard"} className="text-gray-700 dark:text-gray-300 cursor-pointer hover:underline hover:text-blue-700 dark:hover:text-blue-400">Dashboard</a></li>
