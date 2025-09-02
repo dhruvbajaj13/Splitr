@@ -1,0 +1,139 @@
+.
+├── app
+│   ├── about
+│   │   └── page.jsx
+│   ├── api
+│   │   └── inngest
+│   │       ├── route.js
+│   │       └── Splitr1.png
+│   ├── (auth)
+│   │   ├── layout.js
+│   │   ├── sign-in
+│   │   │   └── [[...sign-in]]
+│   │   │       └── page.jsx
+│   │   └── sign-up
+│   │       └── [[...sign-up]]
+│   │           └── page.jsx
+│   ├── globals.css
+│   ├── layout.js
+│   ├── (main)
+│   │   ├── contacts
+│   │   │   ├── components
+│   │   │   │   └── create-group-modal.jsx
+│   │   │   └── page.jsx
+│   │   ├── dashboard
+│   │   │   ├── components
+│   │   │   │   ├── balance-summary.jsx
+│   │   │   │   ├── dashboard-client.jsx
+│   │   │   │   ├── expense-summary.jsx
+│   │   │   │   └── group-list.jsx
+│   │   │   └── page.jsx
+│   │   ├── expenses
+│   │   │   └── new
+│   │   │       ├── components
+│   │   │       │   ├── category-selector.jsx
+│   │   │       │   ├── expense-form.jsx
+│   │   │       │   ├── group-selector.jsx
+│   │   │       │   ├── participant-selector.jsx
+│   │   │       │   └── split-selector.jsx
+│   │   │       └── page.jsx
+│   │   ├── groups
+│   │   │   └── [id]
+│   │   │       └── page.jsx
+│   │   ├── layout.jsx
+│   │   ├── person
+│   │   │   └── [id]
+│   │   │       ├── metadata.js
+│   │   │       └── page.jsx
+│   │   └── settlements
+│   │       └── [type]
+│   │           └── [id]
+│   │               ├── components
+│   │               │   └── settlement-form.jsx
+│   │               └── page.jsx
+│   └── page.jsx
+├── CODE_OF_CONDUCT.md
+├── components
+│   ├── convex-client-provider.jsx
+│   ├── expense-list.jsx
+│   ├── group-balances.jsx
+│   ├── group-members.jsx
+│   ├── header.jsx
+│   ├── hero.jsx
+│   ├── ScrollToTop.jsx
+│   ├── settlement-list.jsx
+│   ├── theme-provider.jsx
+│   ├── theme-toggle.jsx
+│   └── ui
+│       ├── avatar.jsx
+│       ├── badge.jsx
+│       ├── button.jsx
+│       ├── calendar.jsx
+│       ├── card.jsx
+│       ├── command.jsx
+│       ├── dialog.jsx
+│       ├── dropdown-menu.jsx
+│       ├── input.jsx
+│       ├── label.jsx
+│       ├── popover.jsx
+│       ├── radio-group.jsx
+│       ├── select.jsx
+│       ├── slider.jsx
+│       ├── sonner.jsx
+│       ├── tabs.jsx
+│       └── textarea.jsx
+├── components.json
+├── CONTRIBUTING.md
+├── convex
+│   ├── auth.config.js
+│   ├── contacts.js
+│   ├── dashboard.js
+│   ├── email.js
+│   ├── expenses.js
+│   ├── _generated
+│   │   ├── api.d.ts
+│   │   ├── api.js
+│   │   ├── dataModel.d.ts
+│   │   ├── server.d.ts
+│   │   └── server.js
+│   ├── groups.js
+│   ├── inngest.js
+│   ├── README.md
+│   ├── schema.js
+│   ├── seed.js
+│   ├── settlements.js
+│   ├── tsconfig.json
+│   └── users.js
+├── eslint.config.mjs
+├── hooks
+│   ├── use-convex-query.js
+│   └── use-store-user.jsx
+├── jsconfig.json
+├── lib
+│   ├── expense-categories.js
+│   ├── inngest
+│   │   ├── client.js
+│   │   ├── payment-reminders.js
+│   │   └── spending-insights.js
+│   ├── landing.js
+│   └── utils.js
+├── LICENSE
+├── middleware.js
+├── next.config.mjs
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── public
+│   ├── hero.jpeg
+│   ├── logos
+│   │   ├── gssoc logo.png
+│   │   ├── logo1.png
+│   │   └── logo-s.png
+│   └── testimonials
+│       ├── picture1.png
+│       ├── picture2.jpg
+│       └── picture 3.jpg
+├── README.md
+└── structure.txt
+
+36 directories, 101 files
