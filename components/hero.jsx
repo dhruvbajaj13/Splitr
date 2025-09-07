@@ -278,7 +278,7 @@ const HeroSection = () => {
                   size="lg"
                   className="px-10 py-4 text-[18px] font-semibold border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
                 >
-                  <Link href="#how-it-works">See How It Works</Link>
+                  <Link href="#how-it-work">See How It Works</Link>
                 </Button>
               </motion.div>
             </motion.div>
