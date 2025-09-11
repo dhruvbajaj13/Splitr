@@ -139,43 +139,68 @@ export default function AboutPage() {
       </motion.section>
 
       {/* Our Values Section */}
-      <motion.section
-        className="py-20 bg-gray-50 dark:bg-gray-900/20"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+     <motion.section
+  className="py-20 bg-gray-50 dark:bg-gray-900/20"
+  variants={sectionVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
+  <motion.div
+    className="container mx-auto px-4 md:px-6 text-center"
+    variants={staggerContainer}
+  >
+    <motion.div variants={itemVariants}>
+      <Badge
+        variant="outline"
+        className="bg-blue-100 text-[14px] text-blue-800 mb-4 border"
       >
-        <motion.div className="container mx-auto px-4 md:px-6 text-center" variants={staggerContainer}>
-          <motion.div variants={itemVariants}>
-            <Badge variant="outline" className="bg-blue-100 text-[14px] text-blue-800 mb-4 border">
-              Our Values
-            </Badge>
-          </motion.div>
-          <motion.h2 className="font-semibold text-5xl md:text-4xl text-foreground mb-4" variants={itemVariants}>
-            What drives us forward
-          </motion.h2>
-          <motion.p className="mx-auto max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed mb-12" variants={itemVariants}>
-            Our core values shape every decision we make and every feature we build.
-          </motion.p>
+        Our Values
+      </Badge>
+    </motion.div>
+    <motion.h2
+      className="font-semibold text-5xl md:text-4xl text-foreground mb-4"
+      variants={itemVariants}
+    >
+      What drives us forward
+    </motion.h2>
+    <motion.p
+      className="mx-auto max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed mb-12"
+      variants={itemVariants}
+    >
+      Our core values shape every decision we make and every feature we build.
+    </motion.p>
 
-          <motion.div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map(({ icon, title, description }, index) => (
-              <motion.div
-                key={title}
-                variants={itemVariants}
-                className="flex flex-col items-center space-y-4 p-6"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
-                  {icon}
-                </div>
-                <h3 className="text-xl font-bold text-foreground">{title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">{description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+    <motion.div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl">
+      {VALUES.map(({ icon, title, description }) => (
+        <motion.div
+          key={title}
+          variants={itemVariants}
+          whileHover={{
+            scale: 1.07,
+            boxShadow: "0 8px 32px rgba(37, 99, 235, 0.16)",
+            transition: {
+              type: "spring",
+              stiffness: 320,
+              damping: 22,
+              duration: 0.22,
+            },
+          }}
+          className="group flex flex-col items-center space-y-4 p-6 rounded-xl shadow-lg transition-colors duration-300 bg-white dark:bg-blue-950/30 cursor-pointer border border-gray-100 dark:border-gray-700"
+        >
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 transition-colors duration-300 group-hover:text-blue-800 dark:group-hover:text-blue-300">
+            {icon}
+          </div>
+          <h3 className="text-xl font-bold text-foreground">{title}</h3>
+          <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+            {description}
+          </p>
         </motion.div>
-      </motion.section>
+      ))}
+    </motion.div>
+  </motion.div>
+</motion.section>
+
 
       {/* Call-to-Action Section */}
       <motion.section 
