@@ -19,19 +19,19 @@ import { GroupList } from "./components/group-list";
 
 
 export default function Dashboard() {
-  const { data: balances, isLoading: balancesLoading } = useConvexQuery(
+  const { data: balances, isLoading: balancesLoading, error: balancesError } = useConvexQuery(
     api.dashboard.getUserBalances
   );
 
-  const { data: groups, isLoading: groupsLoading } = useConvexQuery(
+  const { data: groups, isLoading: groupsLoading, error: groupsError } = useConvexQuery(
     api.dashboard.getUserGroups
   );
 
-  const { data: totalSpent, isLoading: totalSpentLoading } = useConvexQuery(
+  const { data: totalSpent, isLoading: totalSpentLoading, error: totalSpentError } = useConvexQuery(
     api.dashboard.getTotalSpent
   );
 
-  const { data: monthlySpending, isLoading: monthlySpendingLoading } =
+  const { data: monthlySpending, isLoading: monthlySpendingLoading, error: monthlySpendingError } =
     useConvexQuery(api.dashboard.getMonthlySpending);
 
   const isLoading =
@@ -40,9 +40,29 @@ export default function Dashboard() {
     totalSpentLoading ||
     monthlySpendingLoading;
 
+  const hasErrors = balancesError || groupsError || totalSpentError || monthlySpendingError;
+
   return (
     <div className="container mx-auto py-6 space-y-6">
-      {isLoading ? (
+      {hasErrors ? (
+        <div className="w-full py-12 flex justify-center items-center flex-col gap-4">
+          <div className="text-red-500 text-lg font-semibold">Authentication Error</div>
+          <div className="text-gray-600 text-center max-w-md">
+            There seems to be an issue with authentication. Please try refreshing the page or signing in again.
+          </div>
+          <details className="text-sm text-gray-500 max-w-lg">
+            <summary className="cursor-pointer">Error Details</summary>
+            <pre className="mt-2 p-2 bg-gray-100 rounded text-xs overflow-auto">
+              {JSON.stringify({ 
+                balancesError: balancesError?.message, 
+                groupsError: groupsError?.message, 
+                totalSpentError: totalSpentError?.message, 
+                monthlySpendingError: monthlySpendingError?.message 
+              }, null, 2)}
+            </pre>
+          </details>
+        </div>
+      ) : isLoading ? (
         <div className="w-full py-12 flex justify-center">
           <BarLoader width={"100%"} color="#7762E2" />
         </div>
