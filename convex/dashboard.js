@@ -6,6 +6,10 @@ export const getUserBalances = query({
   handler: async (ctx) => {
     // Use the existing getCurrentUser function instead of repeating auth logic
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    
+    if (!user) {
+      throw new Error("User not found. Please make sure you are properly signed in.");
+    }
 
     /* ───────────── 1‑to‑1 expenses (no groupId) ───────────── */
     const expenses = (await ctx.db.query("expenses").collect()).filter(

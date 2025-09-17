@@ -41,7 +41,7 @@ export const store = mutation({
   },
 });
 
-// Get current user
+// Get current user (internal function)
 export const getCurrentUser = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -57,7 +57,7 @@ export const getCurrentUser = query({
       .first();
 
     if (!user) {
-      throw new Error("User not found");
+      throw new Error("User not found. Please make sure you are properly signed in.");
     }
 
     return user;
