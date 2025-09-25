@@ -7,7 +7,7 @@ import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { BarLoader } from "react-spinners";
 import Image from "next/image";
 import { Menu, X, LayoutDashboard } from "lucide-react";
-import { motion, AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -139,23 +139,27 @@ export default function Header() {
 
   const handleNavClick = useCallback((href) => {
     // Extract hash from href (e.g., "/#features" -> "#features")
-    const hash = href.includes('#') ? href.substring(href.indexOf('#')) : href;
+    const hash = href.includes("#") ? href.substring(href.indexOf("#")) : href;
     setActiveHash(hash);
     setIsMobileMenuOpen(false);
   }, []);
 
   const navLinkClasses = useMemo(
-    () => "relative group font-medium transition-all duration-300 text-gray-700 dark:text-slate-300 hover:text-gray-900 py-2 px-1",
+    () =>
+      "relative group font-medium inline-block transform transition-all duration-300 text-gray-700 dark:text-slate-400 hover:text-[var(--brand)] dark:hover:text-[var(--brand-dark)] hover:scale-105 py-2 px-1 ",
     []
   );
 
   const getUnderlineClasses = useCallback(
     (href) => {
       // Extract hash from href for comparison with activeHash
-      const hash = href.includes('#') ? href.substring(href.indexOf('#')) : href;
-      return `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${activeHash === hash
-        ? "w-full opacity-100"
-        : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
+      const hash = href.includes("#")
+        ? href.substring(href.indexOf("#"))
+        : href;
+      return `absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${
+        activeHash === hash
+          ? "w-full opacity-100"
+          : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"
       }`;
     },
     [activeHash]
@@ -164,7 +168,11 @@ export default function Header() {
   // Motion variants
   const headerVariants = {
     hidden: { y: -20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] } },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
   };
 
   const navItemVariants = {
@@ -175,45 +183,55 @@ export default function Header() {
       transition: { delay: 0.2 + i * 0.08, duration: 0.6 },
     }),
   };
-  
-  const containerVariants={
-    hidden:{opacity:0, width:0, x:-20},
-    visible:{
-      opacity:1, x:0, width:'auto',
-      transition:{
-        duration:0.2,
-        staggerChildren:0.1,
-        delayChildren:0.1,
-        when:"beforeChildren"
-      }
-    },
-    exit:{opacity:0, x:-20, width:0,
-      transition:{duration:0.2, 
-        when:'afterChildren',
-        staggerDirection:-1
-      }}
-  }
 
-  const itemVariants={
-    hidden:{opacity:0, x:10},
-    visible:{opacity:1, x:0, 
-      transition:{type:'spring', stiffness:300, damping:24}},
-    exit:{opacity:0, x:10,}
-  }
+  const containerVariants = {
+    hidden: { opacity: 0, width: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      width: "auto",
+      transition: {
+        duration: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+        when: "beforeChildren",
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: -20,
+      width: 0,
+      transition: {
+        duration: 0.2,
+        when: "afterChildren",
+        staggerDirection: -1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: 10 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 300, damping: 24 },
+    },
+    exit: { opacity: 0, x: 10 },
+  };
   return (
     <>
       <motion.header
         className={`sticky top-0 w-full z-50 transition-all duration-300 dark:bg-blue-950 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80  backdrop-blur-sm"
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-lg"
+            : "bg-white/80  backdrop-blur-sm"
         }`}
-       
         style={{
           ["--brand"]: colorPalette.brand,
           ["--brand-hover"]: colorPalette.brandHover,
           ["--brand-text"]: colorPalette.brandText,
           ["--brand-light"]: colorPalette.brandLight,
           ["--brand-muted"]: colorPalette.brandMuted,
-
         }}
         variants={headerVariants}
         initial="hidden"
@@ -222,22 +240,69 @@ export default function Header() {
         <nav className="relative container mx-auto px-2 lg:px-6 flex items-center justify-between gap-10 h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/logos/logo1.png"
-              alt="Vehiql Logo"
-              height={180}
-              width={280}
-              className="h-12 pl-4 md:h-30 md:w-26 object-contain"
-              priority
-            />
+            <div className="logo-wrapper">
+              <Image
+                src="/logos/logo1.png"
+                alt="Vehiql Logo"
+                height={180}
+                width={280}
+                className="h-12 md:h-30 md:w-26 object-contain"
+                priority
+              />
+            </div>
           </Link>
-          
+
+          <style jsx>{`
+            .logo-wrapper {
+              display: inline-block;
+              transition: transform 0.3s; /* smooth scaling */
+            }
+
+            /* Enlarge on hover */
+            .logo-wrapper:hover {
+              transform: scale(1.1);
+            }
+
+            /* One-time rotation shake on hover */
+            .logo-wrapper:hover {
+              animation: rotate-shake 0.6s ease-in-out;
+            }
+
+            @keyframes rotate-shake {
+              0% {
+                transform: scale(1.1) rotate(0deg);
+              }
+              25% {
+                transform: scale(1.1) rotate(10deg);
+              }
+              50% {
+                transform: scale(1.1) rotate(-10deg);
+              }
+              75% {
+                transform: scale(1.1) rotate(5deg);
+              }
+              100% {
+                transform: scale(1.1) rotate(0deg);
+              }
+            }
+          `}</style>
+
           {/* Desktop Nav Items */}
           {(path === "/" || path === "/about") && (
             <ul className="hidden lg:flex items-center gap-6 xl:gap-10 absolute left-1/2 -translate-x-1/2">
               {navItems.map(({ href, label }, index) => (
-                <motion.li key={href} custom={index} variants={navItemVariants} initial="hidden" animate="visible">
-                  <Link href={href} className={navLinkClasses} onClick={() => handleNavClick(href)}>
+                <motion.li
+                  key={href}
+                  custom={index}
+                  variants={navItemVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <Link
+                    href={href}
+                    className={navLinkClasses}
+                    onClick={() => handleNavClick(href)}
+                  >
                     {label}
                     <motion.span
                       className={getUnderlineClasses(href)}
@@ -257,31 +322,38 @@ export default function Header() {
                   <Button
                     variant="outline"
                     className="hidden md:inline-flex items-center gap-2 text-foreground cursor-pointer bg-secondary hover:text-primary transition-all
-                     dark:bg-black dark:text-white dark:hover:bg-zinc-700">
+                     dark:bg-black dark:text-white dark:hover:bg-zinc-700"
+                  >
                     <LayoutDashboard className="h-4 w-4" />
                     Dashboard
                   </Button>
-                  <Button variant="ghost" className="md:hidden w-10 h-10 p-0 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-800">
+                  <Button
+                    variant="ghost"
+                    className="md:hidden w-10 h-10 p-0 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-800"
+                  >
                     <LayoutDashboard className="h-4 w-4" />
                   </Button>
                 </Link>
                 <div className="flex items-center gap-2">
                   <ThemeToggle />
-                  <UserButton appearance={{ elements: { avatarBox: "w-10 h-10" } }} afterSignOutUrl="/" />
+                  <UserButton
+                    appearance={{ elements: { avatarBox: "w-10 h-10" } }}
+                    afterSignOutUrl="/"
+                  />
                 </div>
               </>
             ) : (
               <>
-                <ThemeToggle />
+                <motion.div whileTap={{ rotate: 180, scale: 0.9 }}>
+                  <ThemeToggle />
+                </motion.div>
                 <SignInButton mode="modal">
-
-                  <button className="signin-btn h-11 px-2 w-20 text-sm font-medium rounded-lg border-2 bg-white text-black">
+                  <button className="signin-btn h-11 px-2 w-20 text-sm font-medium rounded-lg border-2 bg-white text-black transition-all duration-300 hover:bg-blue-300 hover:text-[var(--brand-text)] hover:shadow-md hover:scale-105 active:scale-95">
                     Sign in
                   </button>
-            
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <Button className=" h-11 px-6 text-sm font-medium rounded-lg border-2">
+                  <Button className=" h-11 px-6 text-sm font-medium rounded-lg border-2 bg-white text-black transition-all duration-300 hover:bg-blue-300 hover:text-[var(--brand-text)] hover:shadow-md hover:scale-105 active:scale-95">
                     Get Started
                   </Button>
                 </SignUpButton>
@@ -294,44 +366,52 @@ export default function Header() {
                 className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
                 aria-label="Toggle menu"
               >
-                <AnimatePresence mode="wait">{isMobileMenuOpen ? <X className="text-black dark:text-slate-300"/> : <Menu className="text-black dark:text-slate-300" />}</AnimatePresence>
+                <AnimatePresence mode="wait">
+                  {isMobileMenuOpen ? (
+                    <X className="text-black dark:text-slate-300" />
+                  ) : (
+                    <Menu className="text-black dark:text-slate-300" />
+                  )}
+                </AnimatePresence>
               </motion.button>
             )}
             {/* Mobile Menu */}
 
             <AnimatePresence mode="wait">
-            {
-              isMobileMenuOpen && (path === "/" || path === "/about") && 
-              
-                 <motion.ul 
+              {isMobileMenuOpen && (path === "/" || path === "/about") && (
+                <motion.ul
                   role="menu"
-                  initial='hidden'
-                  animate='visible'
-                  exit='exit'
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
                   variants={containerVariants}
-                 className="fixed top-16 left-2 right-2 bg-white bg-gradient-to-br 
+                  className="fixed top-16 left-2 right-2 bg-white bg-gradient-to-br 
               dark:from-blue-950 dark:via-background dark:to-blue-900
               rounded-b-lg p-4 lg:hidden z-50  
               shadow-gray-400 flex flex-col 
-              gap-6 px-4 py-4 shadow-lg">
-                  {navItems.map(({href, label}, index)=>(
-                    <motion.li 
-                     variants={itemVariants}
-                    key={href}
+              gap-6 px-4 py-4 shadow-lg"
+                >
+                  {navItems.map(({ href, label }, index) => (
+                    <motion.li
+                      variants={itemVariants}
+                      key={href}
                       custom={index}
-                     > 
-                      <Link href={href} className={navLinkClasses} onClick={() => handleNavClick(href)}>
+                    >
+                      <Link
+                        href={href}
+                        className={navLinkClasses}
+                        onClick={() => handleNavClick(href)}
+                      >
                         {label}
                         <motion.span
-                      className={getUnderlineClasses(href)}
-                      style={{ backgroundColor: colorPalette.brand }}
-                    />
+                          className={getUnderlineClasses(href)}
+                          style={{ backgroundColor: colorPalette.brand }}
+                        />
                       </Link>
                     </motion.li>
                   ))}
-                  
-                 </motion.ul>
-            }
+                </motion.ul>
+              )}
             </AnimatePresence>
           </div>
         </nav>
@@ -344,7 +424,7 @@ export default function Header() {
 }
 
 // Utils
-function rgbToHex(r, g, b){
+function rgbToHex(r, g, b) {
   return (
     "#" +
     [r, g, b]
