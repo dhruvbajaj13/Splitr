@@ -179,16 +179,16 @@ export default function LandingPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3">Follow Us</h3>
-            <div className="flex space-x-4 text-xl">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 text-center sm:text-left">Follow Us</h3>
+            <div className="flex space-x-6 text-xl justify-center sm:justify-start">
               <a
                 href="https://www.linkedin.com/in/dhruvbajaj13/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-blue-400"
+                className="transition-transform transform hover:scale-110 focus:scale-110"
               >
                 <img
-                  className="h-7 w-7 object-cover rounded-full"
+                  className="h-8 w-8 object-cover rounded-full hover:brightness-110"
                   src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                   alt="LinkedIn Logo"
                 />
@@ -197,22 +197,22 @@ export default function LandingPage() {
                 href="https://github.com/dhruvbajaj13/Splitr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-blue-600"
+                className="transition-transform transform hover:scale-110 focus:scale-110"
               >
                 <img
-                  className="h-7 w-7 object-cover rounded-full"
+                  className="h-8 w-8 object-cover rounded-full brightness-0 dark:invert hover:brightness-110"
                   src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
                   alt="GitHub Repository"
                 />
               </a>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=d4bajaj@gmail.com"
-                className="hover:text-gray-400"
+                className="transition-transform transform hover:scale-110 focus:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
-                  className="h-7 w-7 object-cover rounded-full"
+                  className="h-8 w-8 object-cover rounded-full hover:brightness-110"
                   src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
                   alt="Email"
                 />
@@ -226,13 +226,15 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="mt-10 mb-1 text-center text-sm border-t font-medium border-gray-400 pt-4 ">
-          <p>© {new Date().getFullYear()} Splitr. All Rights Reserved.</p>
-          <p className="mt-2">Stay updated!
-            <a href="#" className="text-blue-600 underline cursor-pointer">
-              Subscribe to our newsletter.
-            </a>
-          </p>
+        <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full sm:w-64 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Subscribe
+          </button>
         </div>
       </footer>
     </div>
