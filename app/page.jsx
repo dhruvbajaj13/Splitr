@@ -91,7 +91,7 @@ export default function LandingPage() {
       </motion.section>
 
       {/* ───── Testimonials ───── */}
-      <motion.section 
+      <motion.section
        id="testimonials"
        className="bg-gray-50 dark:bg-gray-900/20 py-20" 
        variants={sectionVariants} 
@@ -237,4 +237,4 @@ export default function LandingPage() {
       </footer>
     </div>
   );
-}
+};
