@@ -4,9 +4,7 @@
 
 Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting bills or managing trip expenses, Splitr ensures fairness, and clarity.
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
-
-% **Features**
+# **Features**
 
 * **💸 Add & Split Expenses** – Quickly add expenses and split them evenly or unevenly among group members.
 * **👥 Group Management** – Create groups for trips, roommates, or events and manage shared bills effortlessly.
@@ -74,10 +72,6 @@ GEMINI_API_KEY=
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app running.
-
-## **🤝Contributing**
-We welcome contributions from the community!
-Please read our Contributing Guidelines before you start.
 
 ## **🌟Acknowledgments**
 
