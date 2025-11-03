@@ -1,26 +1,8 @@
 <h1 align="center">🤖💸Splitr - AI Expense Splitting Platform</h1>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+*📌Overview*
 
-![GSSoC'25](https://img.shields.io/badge/GSSoC'25-Selected-orange?style=for-the-badge)
-![GSSoC-OpenSource](https://img.shields.io/badge/Open%20Source%20Program-GSSoC-orange?style=for-the-badge&logo=opensourceinitiative)
-![Built with Love](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red?style=for-the-badge)
-![GitHub Stars](https://img.shields.io/github/stars/<your-username>/Splitr?style=for-the-badge&logo=github)
-![GitHub Forks](https://img.shields.io/github/forks/<your-username>/Splitr?style=for-the-badge&logo=github)
-![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
-![Convex](https://img.shields.io/badge/Backend-Convex-purple?style=for-the-badge)
- <a href="https://github.com/dhruvbajaj13/Splitr/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" /></a>
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge&logo=git)
- <a href="https://github.com/dhruvbajaj13/Splitr"><img src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red?style=for-the-badge" /></a>
-![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green?style=for-the-badge)
-
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
-
-**📌Overview**
-
->Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting bills or managing trip expenses, Splitr ensures fairness, and clarity.
+Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind CSS, Convex, and Clerk. It transforms the way groups manage shared costs by enabling  real-time balance tracking, and intelligent suggestions — all enhanced by Gemini AI. Whether you're splitting bills or managing trip expenses, Splitr ensures fairness, and clarity.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
