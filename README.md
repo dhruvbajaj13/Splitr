@@ -31,9 +31,7 @@ Splitr is a smart, AI-powered expense-splitting app built with Next.js, Tailwind
 - npm or yarn
 - Convex CLI `npm install -g convex`
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
-
-**🚀Demo**
+# **🚀Demo**
 
 * **[Live Demo](https://splitr-q9gg.vercel.app/):** Check out the live version of Splitr to see its features in action.
 
@@ -77,14 +75,11 @@ npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app running.
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
-
-**🤝Contributing**
-
+## **🤝Contributing**
 We welcome contributions from the community!
 Please read our Contributing Guidelines before you start.
 
-**🌟Acknowledgments**
+## **🌟Acknowledgments**
 
 * **[Clerk](https://clerk.com)** for authentication
 * **[Convex](https://convex.dev)** for backend services
@@ -92,7 +87,7 @@ Please read our Contributing Guidelines before you start.
 * **[Tailwind CSS](https://tailwindcss.com)** for styling
 * **[Inngest](https://inngest.com)** for workflow automation
 
-**🤝 Contributing**
+## **🤝 Contributing**
 
 We love contributions from the community! Whether it's a bug report, a new feature, or a documentation improvement, we appreciate your help.
 
@@ -102,13 +97,13 @@ We love contributions from the community! Whether it's a bug report, a new featu
 2.  **Make your changes** and ensure everything is working as expected.
 3.  **Submit a pull request** with a clear description of your changes.
 
-# **📄 License**
+## **📄 License**
 
 This project is licensed under the MIT License - see the [`License`](https://github.com/dhruvbajaj13/Splitr/blob/main/LICENSE) file for details.
 
 > A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
-# ***Permissions***
+## ***Permissions***
 
 * Commercial use
 * Modification
@@ -120,5 +115,3 @@ This project is licensed under the MIT License - see the [`License`](https://git
 * Liability
 * Warranty
 
-
-> Ready to show off your coding achievements? Get started with **Splitr** today! 🚀
